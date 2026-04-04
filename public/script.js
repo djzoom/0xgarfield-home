@@ -188,8 +188,8 @@ if (hoverCapable) {
 
             heroStage.style.setProperty("--stage-shift-x", `${(x / rect.width * 18).toFixed(2)}px`);
             heroStage.style.setProperty("--stage-shift-y", `${(y / rect.height * 18).toFixed(2)}px`);
-            heroStage.style.setProperty("--stage-rotate-x", `${(y / rect.height * -4.2).toFixed(2)}deg`);
-            heroStage.style.setProperty("--stage-rotate-y", `${(x / rect.width * 5.6).toFixed(2)}deg`);
+            heroStage.style.setProperty("--stage-rotate-x", `${(y / rect.height * 4.2).toFixed(2)}deg`);
+            heroStage.style.setProperty("--stage-rotate-y", `${(x / rect.width * -5.6).toFixed(2)}deg`);
             heroStage.style.setProperty("--stage-glow-x", `${glowX.toFixed(2)}%`);
             heroStage.style.setProperty("--stage-glow-y", `${glowY.toFixed(2)}%`);
         });
