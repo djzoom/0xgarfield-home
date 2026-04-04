@@ -265,6 +265,7 @@ if (hoverCapable) {
         targetCursorX = event.clientX;
         targetCursorY = event.clientY;
         cursor.classList.add("is-visible");
+        document.documentElement.classList.add("has-custom-cursor");
         maybeSpawnCursorNote(targetCursorX, targetCursorY);
     }, { passive: true });
 
@@ -284,11 +285,13 @@ if (hoverCapable) {
 
     document.documentElement.addEventListener("mouseleave", () => {
         cursor.classList.remove("is-visible");
+        document.documentElement.classList.remove("has-custom-cursor");
         noteLayer.textContent = "";
     });
 
     window.addEventListener("blur", () => {
         cursor.classList.remove("is-visible");
+        document.documentElement.classList.remove("has-custom-cursor");
         noteLayer.textContent = "";
     });
 
