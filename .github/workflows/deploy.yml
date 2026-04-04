@@ -79,7 +79,7 @@ jobs:
 
       - name: Deploy to Cloudflare Pages
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
-        run: npx wrangler@4 pages deploy dist/ --project-name 0xgarfield --branch=main --commit-dirty=true
+        run: npx wrangler@4 pages deploy dist/ --project-name home --branch=main --commit-dirty=true
 
       - name: Warn when secrets missing
         if: env.CLOUDFLARE_API_TOKEN == '' || env.CLOUDFLARE_ACCOUNT_ID == ''
