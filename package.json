@@ -1,0 +1,9 @@
+{
+  "name": "0xgarfield-home",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node ./scripts/build.mjs",
+    "sync:legacy": "node ./scripts/sync-current-repo.mjs"
+  }
+}
