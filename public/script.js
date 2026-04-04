@@ -198,6 +198,55 @@ if (hoverCapable) {
         resetStage();
     }
 
+    const noteLayer = document.createElement("div");
+    const noteSymbols = ["♪", "♫", "♩", "♬"];
+    let lastNoteAt = 0;
+
+    noteLayer.className = "cursor-note-layer";
+    noteLayer.setAttribute("aria-hidden", "true");
+    document.body.appendChild(noteLayer);
+
+    const spawnNote = (x, y, burst) => {
+        if (document.hidden) return;
+        const note = document.createElement("span");
+        const spread = burst ? 26 : 18;
+        const driftX = (Math.random() * 2 - 1) * (burst ? 34 : 22);
+        const driftY = -24 - Math.random() * (burst ? 26 : 18);
+
+        note.className = "cursor-note";
+        note.textContent = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
+        note.style.left = `${x + (Math.random() * 2 - 1) * spread}px`;
+        note.style.top = `${y - 8 - Math.random() * 16}px`;
+        note.style.setProperty("--note-dx", `${driftX.toFixed(2)}px`);
+        note.style.setProperty("--note-dy", `${driftY.toFixed(2)}px`);
+        note.style.setProperty("--note-rotate", `${((Math.random() * 2 - 1) * 18).toFixed(2)}deg`);
+        note.style.setProperty("--note-duration", `${(burst ? 1500 + Math.random() * 360 : 1280 + Math.random() * 420).toFixed(0)}ms`);
+        note.style.setProperty("--note-scale", `${(0.9 + Math.random() * 0.4).toFixed(2)}`);
+        noteLayer.appendChild(note);
+        window.setTimeout(() => note.remove(), 2200);
+    };
+
+    document.addEventListener("pointermove", (event) => {
+        const now = performance.now();
+        if (now - lastNoteAt < 180 || Math.random() > 0.34) return;
+        lastNoteAt = now;
+        spawnNote(event.clientX, event.clientY, false);
+    }, { passive: true });
+
+    document.addEventListener("pointerdown", (event) => {
+        spawnNote(event.clientX, event.clientY, true);
+        if (Math.random() > 0.4) {
+            window.setTimeout(() => spawnNote(event.clientX, event.clientY, true), 90);
+        }
+    });
+
+    document.documentElement.addEventListener("mouseleave", () => {
+        noteLayer.textContent = "";
+    });
+
+    window.addEventListener("blur", () => {
+        noteLayer.textContent = "";
+    });
 }
 
 function trackEmailInteraction(action, context) {
