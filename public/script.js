@@ -211,8 +211,8 @@ if (hoverCapable) {
     cursor.setAttribute("aria-hidden", "true");
     noteLayer.className = "cursor-note-layer";
     noteLayer.setAttribute("aria-hidden", "true");
-    document.body.appendChild(noteLayer);
-    document.body.appendChild(cursor);
+    document.documentElement.appendChild(noteLayer);
+    document.documentElement.appendChild(cursor);
     document.documentElement.classList.add("has-custom-cursor");
 
     const cursorTargets = Array.from(
