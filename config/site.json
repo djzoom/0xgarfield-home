@@ -1,0 +1,34 @@
+{
+  "site": {
+    "rootUrl": "https://www.0xgarfield.com",
+    "apexUrl": "https://0xgarfield.com",
+    "homeEnUrl": "https://www.0xgarfield.com/",
+    "homeZhUrl": "https://www.0xgarfield.com/index-zh.html",
+    "homeEnPath": "index.html",
+    "homeZhPath": "index-zh.html"
+  },
+  "assets": {
+    "cssVersion": "20260326-17",
+    "scriptVersion": "20260326-13"
+  },
+  "projects": {
+    "talktalkUrl": "https://talktalk.0xgarfield.com/"
+  },
+  "profiles": {
+    "githubUrl": "https://github.com/djzoom",
+    "xUrl": "https://twitter.com/djwz",
+    "instagramUrl": "https://www.instagram.com/noodlewong/",
+    "xiaohongshuUrl": "https://www.xiaohongshu.com/user/profile/5a7c0e98e8ac2b6f26a1100b",
+    "weiboUrl": "https://weibo.com/1622480237",
+    "baikeUrl": "https://baike.baidu.com/search?word=%E5%8A%A0%E8%8F%B2%E4%BC%97"
+  },
+  "references": {
+    "redDotUrl": "https://www.red-dot.org/project/pilo-8321",
+    "aDesignUrl": "https://competition.adesignaward.com/design.php?ID=67389",
+    "geekParkUrl": "https://www.geekpark.net/news/215172",
+    "nikeMediaUrl": "https://www.nikeinc.com.cn/html/page-1924.html",
+    "nikeRunnerUrl": "https://www.nikeinc.com.cn/html/page-1945.html",
+    "runBabyRunWeiboUrl": "https://weibo.com/1622480237/B2TeIpGaO",
+    "runBabyRunYoutubeUrl": "https://www.youtube.com/@Run-Baby-Run"
+  }
+}
