@@ -1,4 +1,4 @@
-// Hide portrait when tab is inactive to prevent browser grayscale thumbnail
+// Hide portrait when tab is inactive (avoid grayscale browser thumbnail).
 const heroPortraitImg = document.querySelector(".hero-portrait img");
 if (heroPortraitImg) {
     document.addEventListener("visibilitychange", () => {
@@ -22,7 +22,6 @@ const contactEmail = `${emailLocalPart}@${emailDomainPart}`;
 function scrollToSection(id) {
     const section = document.getElementById(id);
     if (!section) return;
-
     section.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
@@ -65,9 +64,10 @@ function updateScrollState() {
 window.addEventListener("scroll", updateScrollState, { passive: true });
 updateScrollState();
 
+// Reveal-on-scroll for [data-reveal] sections.
 const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
 revealItems.forEach((item, index) => {
-    item.style.setProperty("--reveal-delay", `${(index % 6) * 70}ms`);
+    item.style.setProperty("--reveal-delay", `${(index % 6) * 60}ms`);
 });
 
 if ("IntersectionObserver" in window) {
@@ -90,114 +90,11 @@ if ("IntersectionObserver" in window) {
     revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
+// Subtle ambient music notes following the cursor on hover-capable devices.
+// Toned down to "occasional" rather than "trail"; respects reduced-motion via CSS.
 const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-const interactiveTargets = Array.from(
-    document.querySelectorAll(".surface, .btn, .hero-portrait, .contact-links a")
-);
 
 if (hoverCapable) {
-    interactiveTargets.forEach((target) => {
-        target.addEventListener("pointermove", (event) => {
-            const rect = target.getBoundingClientRect();
-            if (!rect.width || !rect.height) return;
-
-            const x = ((event.clientX - rect.left) / rect.width) * 100;
-            const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-            target.style.setProperty("--pointer-x", `${x.toFixed(2)}%`);
-            target.style.setProperty("--pointer-y", `${y.toFixed(2)}%`);
-            target.classList.add("has-pointer");
-        });
-
-        target.addEventListener("pointerleave", () => {
-            target.classList.remove("has-pointer");
-        });
-    });
-
-    const magneticTargets = Array.from(document.querySelectorAll(".btn, .nav-link, .lang-switch"));
-
-    magneticTargets.forEach((target) => {
-        let currentX = 0;
-        let currentY = 0;
-        let targetX = 0;
-        let targetY = 0;
-        let rafId = 0;
-
-        const render = () => {
-            currentX += (targetX - currentX) * 0.18;
-            currentY += (targetY - currentY) * 0.18;
-
-            target.style.setProperty("--magnetic-x", `${currentX.toFixed(2)}px`);
-            target.style.setProperty("--magnetic-y", `${currentY.toFixed(2)}px`);
-
-            if (
-                Math.abs(targetX - currentX) > 0.08 ||
-                Math.abs(targetY - currentY) > 0.08
-            ) {
-                rafId = window.requestAnimationFrame(render);
-            } else {
-                rafId = 0;
-            }
-        };
-
-        const queueRender = () => {
-            if (!rafId) {
-                rafId = window.requestAnimationFrame(render);
-            }
-        };
-
-        target.addEventListener("pointermove", (event) => {
-            const rect = target.getBoundingClientRect();
-            if (!rect.width || !rect.height) return;
-
-            const dx = event.clientX - (rect.left + rect.width / 2);
-            const dy = event.clientY - (rect.top + rect.height / 2);
-            const maxShift = 10;
-
-            targetX = Math.max(-maxShift, Math.min(maxShift, dx * 0.14));
-            targetY = Math.max(-maxShift, Math.min(maxShift, dy * 0.14));
-            queueRender();
-        });
-
-        target.addEventListener("pointerleave", () => {
-            targetX = 0;
-            targetY = 0;
-            queueRender();
-        });
-    });
-
-    const heroStage = document.querySelector(".hero-stage");
-    if (heroStage) {
-        const resetStage = () => {
-            heroStage.style.setProperty("--stage-shift-x", "0px");
-            heroStage.style.setProperty("--stage-shift-y", "0px");
-            heroStage.style.setProperty("--stage-rotate-x", "0deg");
-            heroStage.style.setProperty("--stage-rotate-y", "0deg");
-            heroStage.style.setProperty("--stage-glow-x", "68%");
-            heroStage.style.setProperty("--stage-glow-y", "16%");
-        };
-
-        heroStage.addEventListener("pointermove", (event) => {
-            const rect = heroStage.getBoundingClientRect();
-            if (!rect.width || !rect.height) return;
-
-            const x = event.clientX - rect.left - rect.width / 2;
-            const y = event.clientY - rect.top - rect.height / 2;
-            const glowX = ((event.clientX - rect.left) / rect.width) * 100;
-            const glowY = ((event.clientY - rect.top) / rect.height) * 100;
-
-            heroStage.style.setProperty("--stage-shift-x", `${(x / rect.width * 18).toFixed(2)}px`);
-            heroStage.style.setProperty("--stage-shift-y", `${(y / rect.height * 18).toFixed(2)}px`);
-            heroStage.style.setProperty("--stage-rotate-x", `${(y / rect.height * 4.2).toFixed(2)}deg`);
-            heroStage.style.setProperty("--stage-rotate-y", `${(x / rect.width * -5.6).toFixed(2)}deg`);
-            heroStage.style.setProperty("--stage-glow-x", `${glowX.toFixed(2)}%`);
-            heroStage.style.setProperty("--stage-glow-y", `${glowY.toFixed(2)}%`);
-        });
-
-        heroStage.addEventListener("pointerleave", resetStage);
-        resetStage();
-    }
-
     const noteLayer = document.createElement("div");
     const noteSymbols = ["♪", "♫", "♩", "♬"];
     let lastNoteAt = 0;
@@ -206,49 +103,38 @@ if (hoverCapable) {
     noteLayer.setAttribute("aria-hidden", "true");
     document.body.appendChild(noteLayer);
 
-    const spawnNote = (x, y, burst) => {
+    const spawnNote = (x, y) => {
         if (document.hidden) return;
         const note = document.createElement("span");
-        const spread = burst ? 26 : 18;
-        const driftX = (Math.random() * 2 - 1) * (burst ? 34 : 22);
-        const driftY = -24 - Math.random() * (burst ? 26 : 18);
+        const driftX = (Math.random() * 2 - 1) * 18;
+        const driftY = -28 - Math.random() * 14;
 
         note.className = "cursor-note";
         note.textContent = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
-        note.style.left = `${x + (Math.random() * 2 - 1) * spread}px`;
-        note.style.top = `${y - 8 - Math.random() * 16}px`;
+        note.style.left = `${x + (Math.random() * 2 - 1) * 14}px`;
+        note.style.top = `${y - 6 - Math.random() * 12}px`;
         note.style.setProperty("--note-dx", `${driftX.toFixed(2)}px`);
         note.style.setProperty("--note-dy", `${driftY.toFixed(2)}px`);
-        note.style.setProperty("--note-rotate", `${((Math.random() * 2 - 1) * 18).toFixed(2)}deg`);
-        note.style.setProperty("--note-duration", `${(burst ? 1500 + Math.random() * 360 : 1280 + Math.random() * 420).toFixed(0)}ms`);
-        note.style.setProperty("--note-scale", `${(0.9 + Math.random() * 0.4).toFixed(2)}`);
+        note.style.setProperty("--note-rotate", `${((Math.random() * 2 - 1) * 14).toFixed(2)}deg`);
+        note.style.setProperty("--note-duration", `${(1500 + Math.random() * 350).toFixed(0)}ms`);
+        note.style.setProperty("--note-scale", `${(0.85 + Math.random() * 0.25).toFixed(2)}`);
         noteLayer.appendChild(note);
         window.setTimeout(() => note.remove(), 2200);
     };
 
     document.addEventListener("pointermove", (event) => {
         const now = performance.now();
-        if (now - lastNoteAt < 180 || Math.random() > 0.34) return;
+        if (now - lastNoteAt < 540 || Math.random() > 0.18) return;
         lastNoteAt = now;
-        spawnNote(event.clientX, event.clientY, false);
+        spawnNote(event.clientX, event.clientY);
     }, { passive: true });
 
-    document.addEventListener("pointerdown", (event) => {
-        spawnNote(event.clientX, event.clientY, true);
-        if (Math.random() > 0.4) {
-            window.setTimeout(() => spawnNote(event.clientX, event.clientY, true), 90);
-        }
-    });
-
-    document.documentElement.addEventListener("mouseleave", () => {
-        noteLayer.textContent = "";
-    });
-
-    window.addEventListener("blur", () => {
-        noteLayer.textContent = "";
-    });
+    const clearNotes = () => { noteLayer.textContent = ""; };
+    document.documentElement.addEventListener("mouseleave", clearNotes);
+    window.addEventListener("blur", clearNotes);
 }
 
+// Email link / copy-email handlers (functional).
 function trackEmailInteraction(action, context) {
     const payload = {
         action,
