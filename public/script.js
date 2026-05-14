@@ -1,8 +1,8 @@
 // Hide portrait when tab is inactive (avoid grayscale browser thumbnail).
-const heroPortraitImg = document.querySelector(".hero-portrait img");
-if (heroPortraitImg) {
+const portraitImg = document.querySelector(".about-portrait img");
+if (portraitImg) {
     document.addEventListener("visibilitychange", () => {
-        heroPortraitImg.style.display = document.hidden ? "none" : "";
+        portraitImg.style.display = document.hidden ? "none" : "";
     });
 }
 
