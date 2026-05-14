@@ -689,6 +689,51 @@ button:focus-visible {
         radial-gradient(circle at 76% 54%, rgba(124, 67, 40, 0.11), transparent 24%);
 }
 
+.credibility-strip {
+    margin-top: 2.6rem;
+    padding: 1.4rem 0 1.6rem;
+    border-top: 1px solid rgba(25, 21, 18, 0.1);
+    border-bottom: 1px solid rgba(25, 21, 18, 0.1);
+    display: grid;
+    gap: 0.85rem;
+}
+
+.credibility-strip .eyebrow {
+    margin: 0;
+}
+
+.credibility-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 1.9rem;
+    row-gap: 0.55rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    color: var(--muted-strong);
+    letter-spacing: 0.01em;
+}
+
+.credibility-list li {
+    position: relative;
+    white-space: nowrap;
+}
+
+.credibility-list li + li::before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(25, 21, 18, 0.32);
+    transform: translateY(-50%);
+}
+
 .section-heading {
     display: grid;
     gap: 0.56rem;
@@ -1522,6 +1567,20 @@ html[lang="zh-Hans"] .edition-chip {
     .hero-lede {
         font-size: 1.03rem;
         line-height: 1.72;
+    }
+
+    .credibility-strip {
+        margin-top: 1.8rem;
+        padding: 1.1rem 0 1.2rem;
+    }
+
+    .credibility-list {
+        column-gap: 1.4rem;
+        font-size: 0.98rem;
+    }
+
+    .credibility-list li + li::before {
+        left: -0.8rem;
     }
 
     .hero-support {
