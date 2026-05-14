@@ -5,11 +5,17 @@
     "homeEnUrl": "https://www.0xgarfield.com/",
     "homeZhUrl": "https://www.0xgarfield.com/index-zh.html",
     "homeEnPath": "index.html",
-    "homeZhPath": "index-zh.html"
+    "homeZhPath": "index-zh.html",
+    "aboutEnPath": "about.html",
+    "aboutZhPath": "about-zh.html",
+    "recognitionEnPath": "recognition.html",
+    "recognitionZhPath": "recognition-zh.html",
+    "writingEnPath": "writing.html",
+    "writingZhPath": "writing-zh.html"
   },
   "assets": {
-    "cssVersion": "20260514-01",
-    "scriptVersion": "20260514-01"
+    "cssVersion": "20260514-02",
+    "scriptVersion": "20260514-02"
   },
   "projects": {
     "talktalkUrl": "https://talktalk.0xgarfield.com/"
