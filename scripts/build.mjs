@@ -11,6 +11,12 @@ const configPath = path.join(projectRoot, "config", "site.json");
 
 const routeAliases = new Map([
   ["index-zh.html", path.join("index-zh", "index.html")],
+  ["about.html", path.join("about", "index.html")],
+  ["about-zh.html", path.join("about-zh", "index.html")],
+  ["recognition.html", path.join("recognition", "index.html")],
+  ["recognition-zh.html", path.join("recognition-zh", "index.html")],
+  ["writing.html", path.join("writing", "index.html")],
+  ["writing-zh.html", path.join("writing-zh", "index.html")],
   ["evidence.html", path.join("evidence", "index.html")],
   ["evidence-zh.html", path.join("evidence-zh", "index.html")],
   ["404.html", path.join("404", "index.html")]
