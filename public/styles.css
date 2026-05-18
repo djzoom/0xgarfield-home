@@ -10,12 +10,13 @@
  *   4. Header/nav   .site-header, .brand, .primary-nav
  *   5. Buttons      .btn, .btn-primary, .btn-secondary
  *   6. Type tokens  .eyebrow, .panel-kicker, .proof-tag
- *   7. Hero (home)  .hero, .hero-copy, .hero-stage, .hero-portrait
- *   8. Credibility  .credibility-strip, .credibility-list
- *   9. Now section  .now-section, .now-axes (also .prose-axes)
- *  10. Work cards   .overview, .project-grid, .project-card
- *  11. Contact      .contact-card, .contact-links
- *  12. Prose pages  .page-prose, .prose-article, .prose-section, etc.
+ *   7. Hero (home)  .hero, .hero-copy
+ *   8. About header .about-header, .about-portrait (5:7 native)
+ *   9. Credibility  .credibility-strip, .credibility-list
+ *  10. Now section  .now-section, .now-axes (also .prose-axes)
+ *  11. Work cards   .overview, .project-grid, .project-card
+ *  12. Contact      .contact-card, .contact-links
+ *  13. Prose pages  .page-prose, .prose-article, .prose-section, etc.
  *  13. Records      .record-section, .record-row (recognition)
  *  14. Writing      .writing-list, .writing-row
  *  15. Redirect     .redirect-page, .redirect-card (404, evidence)
