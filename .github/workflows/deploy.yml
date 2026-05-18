@@ -38,45 +38,6 @@ jobs:
       - name: Build
         run: node scripts/build.mjs
 
-      - name: Install fonttools + brotli
-        run: pip install fonttools brotli
-
-      - name: Download source font
-        run: |
-          curl -fL -o /tmp/AlibabaPuHuiTi-Heavy.ttf \
-            "https://raw.githubusercontent.com/chinayin/fonts-alibaba-puhuiti-heavy/master/Alibaba-PuHuiTi-Heavy.ttf"
-
-      - name: Subset font from built HTML
-        run: |
-          mkdir -p dist/fonts
-
-          python3 - <<'PYEOF'
-          import re, glob
-          chars = set()
-          for path in glob.glob("dist/**/*.html", recursive=True):
-              with open(path, encoding="utf-8") as f:
-                  text = f.read()
-              text = re.sub(r"<[^>]+>", " ", text)
-              for ch in text:
-                  cp = ord(ch)
-                  if cp > 0x2E7F:
-                      chars.add(ch)
-          unicodes = ",".join(f"U+{ord(c):04X}" for c in sorted(chars, key=ord))
-          with open("/tmp/subset_unicodes.txt", "w") as f:
-              f.write(unicodes)
-          print(f"Font subset: {len(chars)} characters")
-          PYEOF
-
-          pyftsubset /tmp/AlibabaPuHuiTi-Heavy.ttf \
-            --unicodes="$(cat /tmp/subset_unicodes.txt)" \
-            --output-file=dist/fonts/AlibabaPuHuiTi-Heavy-subset.woff2 \
-            --flavor=woff2 \
-            --layout-features="*" \
-            --no-hinting \
-            --desubroutinize
-
-          ls -lh dist/fonts/AlibabaPuHuiTi-Heavy-subset.woff2
-
       - name: Deploy to Cloudflare Pages
         if: env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != ''
         run: npx wrangler@4 pages deploy dist/ --project-name home --branch=main --commit-dirty=true
