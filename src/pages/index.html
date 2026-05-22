@@ -113,9 +113,18 @@
 
             <div class="project-grid">
                 <article class="project-card" data-reveal>
-                    <figure class="project-media">
+                    <figure class="project-media" data-embed-figure
+                        data-embed-src="{{projects.piloViewerUrl}}"
+                        data-embed-title="PILO interactive 3D viewer"
+                        data-embed-open-label="Try 3D model"
+                        data-embed-close-label="Hide 3D">
                         <img src="images/archive-brookstone-retail.jpg" alt="PILO displayed in Brookstone retail"
                             loading="lazy">
+                        <button type="button" class="media-embed-toggle" data-embed-trigger
+                            aria-label="Open interactive 3D model of PILO">
+                            <span class="media-embed-toggle-text">Try 3D model</span>
+                            <span class="media-embed-toggle-arrow" aria-hidden="true">→</span>
+                        </button>
                     </figure>
                     <p class="proof-tag">PILO</p>
                     <h3>Turning the feeling of nighttime companionship into a product the market could actually test.</h3>

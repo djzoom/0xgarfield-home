@@ -112,8 +112,17 @@
 
             <div class="project-grid">
                 <article class="project-card" data-reveal>
-                    <figure class="project-media">
+                    <figure class="project-media" data-embed-figure
+                        data-embed-src="{{projects.piloViewerUrl}}"
+                        data-embed-title="PILO 交互式 3D 模型"
+                        data-embed-open-label="试试 3D 模型"
+                        data-embed-close-label="收起 3D">
                         <img src="images/archive-brookstone-retail.jpg" alt="PILO 在线下渠道展示" loading="lazy">
+                        <button type="button" class="media-embed-toggle" data-embed-trigger
+                            aria-label="打开 PILO 交互式 3D 模型">
+                            <span class="media-embed-toggle-text">试试 3D 模型</span>
+                            <span class="media-embed-toggle-arrow" aria-hidden="true">→</span>
+                        </button>
                     </figure>
                     <p class="proof-tag">PILO</p>
                     <h3>把夜晚的陪伴感，做成一件经得起市场检验的产品。</h3>

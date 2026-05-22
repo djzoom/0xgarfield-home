@@ -627,6 +627,58 @@ button:focus-visible {
     object-fit: cover;
 }
 
+/* Click-to-reveal media embed (e.g. PILO 3D viewer) */
+.media-embed-toggle {
+    position: absolute;
+    right: 0.55rem;
+    bottom: 0.55rem;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.7rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 999px;
+    background: rgba(10, 10, 10, 0.72);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #f5f5f5;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.media-embed-toggle:hover,
+.media-embed-toggle:focus-visible {
+    background: rgba(10, 10, 10, 0.88);
+    border-color: rgba(255, 255, 255, 0.32);
+    color: #ffffff;
+}
+
+.media-embed-toggle-arrow {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.85rem;
+    line-height: 1;
+}
+
+.media-embed-frame {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    z-index: 1;
+    background: #040410;
+}
+
+.project-media[data-embed-active] img {
+    visibility: hidden;
+}
+
 .project-media-ambient {
     display: grid;
     place-items: center;
