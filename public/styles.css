@@ -1165,25 +1165,36 @@ button:focus-visible {
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     overflow: hidden;
-    background: #0c0c0c;
+    background-color: #0c0c0c;
+    background-repeat: no-repeat;
     box-shadow:
         0 14px 30px rgba(0, 0, 0, 0.22),
         inset 0 0 0 1px rgba(0, 0, 0, 0.14);
     will-change: transform;
 }
 
+/* The <img> stays for accessibility/SEO; the framed background is what shows,
+   so every disc can be cropped to its logo/subject in pure CSS. */
 .disc img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
+    opacity: 0;
 }
 
-/* per-image focal point (certificates carry their logo up top) */
-.record-disc.is-top .disc img { object-position: center top; }
-.record-disc.is-left .disc img { object-position: left center; }
-.record-disc.is-nike .disc img { object-position: 64% 30%; }
+/* Per-image creative framing — keyed by filename via :has(), no markup edits.
+   Certificates are portrait scans, so we zoom into the brand mark. */
+.disc:has(img[src*="red-dot"])     { background-image: url("images/archive-red-dot-letter.jpg");   background-size: 240%; background-position: 13% 8%; }
+.disc:has(img[src*="a-design"])    { background-image: url("images/archive-a-design.jpg");          background-size: 205%; background-position: 82% 9%; }
+.disc:has(img[src*="golden-pin"])  { background-image: url("images/archive-golden-pin.jpg");         background-size: 200%; background-position: 50% 9%; }
+.disc:has(img[src*="plus-x"])      { background-image: url("images/archive-plus-x.jpg");             background-size: 200%; background-position: 50% 13%; }
+.disc:has(img[src*="k-design"])    { background-image: url("images/archive-k-design.jpg");           background-size: 190%; background-position: 16% 12%; }
+.disc:has(img[src*="mens-health"]) { background-image: url("images/archive-mens-health.jpg");        background-size: 230%; background-position: 17% 40%; }
+.disc:has(img[src*="wired"])       { background-image: url("images/archive-wired-germany.jpg");       background-size: 135%; background-position: 52% 58%; }
+.disc:has(img[src*="nike"])        { background-image: url("images/archive-nike-run-baby-run.png");   background-size: 175%; background-position: 88% 19%; }
+.disc:has(img[src*="brookstone"])  { background-image: url("images/archive-brookstone-retail.jpg");   background-size: cover; background-position: 50% 45%; }
 
 /* concentric grooves limited to an outer ring + a label-edge line */
 .disc::after {
