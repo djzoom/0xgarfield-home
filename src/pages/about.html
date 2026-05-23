@@ -61,11 +61,9 @@
         <article class="prose-article" data-reveal>
             <div class="about-header">
                 <div class="about-header-copy">
-                    <p class="eyebrow">About</p>
-                    <h1>Garfield Wang</h1>
-                    <p class="prose-lede">
-                        Sound as dose, not delivery.
-                    </p>
+                    <p class="eyebrow" data-editable="about.eyebrow">{{content.about.eyebrow}}</p>
+                    <h1 data-editable="about.heading">{{content.about.heading}}</h1>
+                    <p class="prose-lede" data-editable="about.lede">{{content.about.lede}}</p>
                 </div>
                 <aside class="about-portrait">
                     <img src="images/hero-2026-primary.jpeg" alt="Portrait of Garfield Wang">
@@ -73,21 +71,21 @@
             </div>
 
             <section class="prose-section">
-                <p>Founder of Soundario. Twenty years in audio — broadcast, music production, hardware, now AI. One thesis throughout: sound is the most under-engineered interface to the human nervous system.</p>
-                <p>Current work: software that senses listener state and shapes audio in real time. Sound engineered to produce a specific state in a specific person.</p>
+                <p data-editable="about.bio1">{{content.about.bio1}}</p>
+                <p data-editable="about.bio2">{{content.about.bio2}}</p>
             </section>
 
             <section class="prose-section">
-                <h2>The category, in three axes</h2>
+                <h2 data-editable="about.axes.heading">{{content.about.axes.heading}}</h2>
                 <ul class="prose-axes">
-                    <li><span class="axis-label">Expression</span><span class="axis-copy">Talktalk. Real-time spoken expression.</span></li>
-                    <li><span class="axis-label">Attention</span><span class="axis-copy">Adaptive audio. Sense state, shape sound.</span></li>
-                    <li><span class="axis-label">Performance</span><span class="axis-copy">PILO + Run Baby Run® extended to AI.</span></li>
+                    <li><span class="axis-label" data-editable="about.axes.axis1.label">{{content.about.axes.axis1.label}}</span><span class="axis-copy" data-editable="about.axes.axis1.copy">{{content.about.axes.axis1.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="about.axes.axis2.label">{{content.about.axes.axis2.label}}</span><span class="axis-copy" data-editable="about.axes.axis2.copy">{{content.about.axes.axis2.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="about.axes.axis3.label">{{content.about.axes.axis3.label}}</span><span class="axis-copy" data-editable="about.axes.axis3.copy">{{content.about.axes.axis3.copy}}</span></li>
                 </ul>
             </section>
 
             <section class="prose-section">
-                <h2>Background, in brief</h2>
+                <h2 data-editable="about.background.heading">{{content.about.background.heading}}</h2>
                 <dl class="prose-facts">
                     <div class="prose-fact"><dt>Founder</dt><dd>Soundario · PILO · Run Baby Run® · Talktalk</dd></div>
                     <div class="prose-fact"><dt>Recognized work</dt><dd>Red Dot · A' Design · Golden Pin · Plus X · K-Design</dd></div>
@@ -100,8 +98,8 @@
             </section>
 
             <section class="prose-section">
-                <h2>Get in touch</h2>
-                <p>Email is fastest.</p>
+                <h2 data-editable="about.contact.heading">{{content.about.contact.heading}}</h2>
+                <p data-editable="about.contact.body">{{content.about.contact.body}}</p>
                 <p class="prose-contact">
                     <a class="btn btn-primary" data-email-link data-email-context="about" data-email-mode="address">Email</a>
                     <a class="btn btn-secondary" href="{{site.recognitionEnPath}}">See full recognition</a>

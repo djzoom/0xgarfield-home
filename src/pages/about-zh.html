@@ -61,11 +61,9 @@
         <article class="prose-article" data-reveal>
             <div class="about-header">
                 <div class="about-header-copy">
-                    <p class="eyebrow">关于</p>
-                    <h1>加菲众</h1>
-                    <p class="prose-lede">
-                        畅游声音创意。
-                    </p>
+                    <p class="eyebrow" data-editable="about.eyebrow">{{content.about.eyebrow}}</p>
+                    <h1 data-editable="about.heading">{{content.about.heading}}</h1>
+                    <p class="prose-lede" data-editable="about.lede">{{content.about.lede}}</p>
                 </div>
                 <aside class="about-portrait">
                     <img src="images/hero-2026-primary.jpeg" alt="加菲众肖像">
@@ -73,21 +71,21 @@
             </div>
 
             <section class="prose-section">
-                <p>Soundario 创始人。二十年音频工作——广播、音乐制作、硬件，现在是 AI。一条贯穿始终的论点：声音是人类神经系统最被低估的接口。</p>
-                <p>当前工作：感知听者状态、实时塑形音频的软件系统。为特定人的特定状态精确设计声音。</p>
+                <p data-editable="about.bio1">{{content.about.bio1}}</p>
+                <p data-editable="about.bio2">{{content.about.bio2}}</p>
             </section>
 
             <section class="prose-section">
-                <h2>赛道的三条轴</h2>
+                <h2 data-editable="about.axes.heading">{{content.about.axes.heading}}</h2>
                 <ul class="prose-axes">
-                    <li><span class="axis-label">表达 Expression</span><span class="axis-copy">Talktalk。实时口语工具。</span></li>
-                    <li><span class="axis-label">专注 Attention</span><span class="axis-copy">自适应音频。感知状态，塑形声音。</span></li>
-                    <li><span class="axis-label">表现 Performance</span><span class="axis-copy">PILO + Run Baby Run® 延伸至 AI。</span></li>
+                    <li><span class="axis-label" data-editable="about.axes.axis1.label">{{content.about.axes.axis1.label}}</span><span class="axis-copy" data-editable="about.axes.axis1.copy">{{content.about.axes.axis1.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="about.axes.axis2.label">{{content.about.axes.axis2.label}}</span><span class="axis-copy" data-editable="about.axes.axis2.copy">{{content.about.axes.axis2.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="about.axes.axis3.label">{{content.about.axes.axis3.label}}</span><span class="axis-copy" data-editable="about.axes.axis3.copy">{{content.about.axes.axis3.copy}}</span></li>
                 </ul>
             </section>
 
             <section class="prose-section">
-                <h2>简要背景</h2>
+                <h2 data-editable="about.background.heading">{{content.about.background.heading}}</h2>
                 <dl class="prose-facts">
                     <div class="prose-fact"><dt>创始人</dt><dd>Soundario · PILO · Run Baby Run® · Talktalk</dd></div>
                     <div class="prose-fact"><dt>设计奖项</dt><dd>Red Dot · A' Design · 金点 · Plus X · K-Design</dd></div>
@@ -100,8 +98,8 @@
             </section>
 
             <section class="prose-section">
-                <h2>联系方式</h2>
-                <p>邮件最快。</p>
+                <h2 data-editable="about.contact.heading">{{content.about.contact.heading}}</h2>
+                <p data-editable="about.contact.body">{{content.about.contact.body}}</p>
                 <p class="prose-contact">
                     <a class="btn btn-primary" data-email-link data-email-context="about" data-email-mode="address">邮箱</a>
                     <a class="btn btn-secondary" href="{{site.recognitionZhPath}}">查看完整荣誉</a>

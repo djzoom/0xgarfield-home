@@ -280,3 +280,26 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         }
     });
 });
+
+// Secret admin activation: 5 clicks on .brand-mark within 3 seconds.
+(function () {
+    const mark = document.querySelector(".brand-mark");
+    if (!mark) return;
+    const CLICKS = 5;
+    const WINDOW = 3000;
+    let clicks = [];
+    let loaded = false;
+
+    mark.addEventListener("click", () => {
+        if (loaded) return;
+        const now = Date.now();
+        clicks.push(now);
+        clicks = clicks.filter((t) => now - t < WINDOW);
+        if (clicks.length >= CLICKS) {
+            loaded = true;
+            const s = document.createElement("script");
+            s.src = "admin.js?v=" + Date.now();
+            document.body.appendChild(s);
+        }
+    });
+})();

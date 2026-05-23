@@ -1,0 +1,19 @@
+name = "0xgarfield-cms"
+main = "index.js"
+compatibility_date = "2024-09-01"
+
+[vars]
+GITHUB_REPO = "djzoom/0xgarfield-home"
+GITHUB_BRANCH = "main"
+ALLOWED_ORIGIN = "https://www.0xgarfield.com"
+
+[[kv_namespaces]]
+binding = "CMS_KV"
+id = "c838ccef0cb04b359dd1f08bb228122f"
+
+# Set these as secrets via:
+#   wrangler secret put CMS_PASSWORD_HASH
+#   wrangler secret put GITHUB_TOKEN
+#
+# To generate CMS_PASSWORD_HASH from a password:
+#   echo -n "your-password" | shasum -a 256 | cut -d' ' -f1
