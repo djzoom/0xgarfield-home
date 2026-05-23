@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="348" viewBox="0 0 540 348">
+  <rect width="540" height="348" fill="#f8f8f0"/>
+  <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+    <circle cx="10" cy="10" r="0.8" fill="#ccc"/>
+  </pattern>
+  <rect width="540" height="348" fill="url(#dots)"/>
+  <g transform="translate(270.0,174.0)">
+    <line x1="0.0" y1="-0.0" x2="-104.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-0.0" x2="0.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-0.0" x2="104.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-0.0" x2="0.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-104.0" y1="-0.0" x2="0.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-104.0" y1="-0.0" x2="0.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-104.0" y1="-0.0" x2="-128.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-104.0" y1="-0.0" x2="-128.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-80.0" x2="104.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-80.0" x2="-128.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-80.0" x2="0.0" y2="-112.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-80.0" x2="128.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="104.0" y1="-0.0" x2="0.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="104.0" y1="-0.0" x2="128.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="104.0" y1="-0.0" x2="128.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="104.0" y1="-0.0" x2="0.0" y2="112.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="80.0" x2="0.0" y2="112.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="80.0" x2="-128.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="-80.0" x2="0.0" y2="-112.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="-80.0" x2="-128.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="-80.0" x2="-224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="-80.0" x2="-176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-112.0" x2="128.0" y2="-80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-112.0" x2="-176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-112.0" x2="0.0" y2="-136.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="-80.0" x2="128.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="-80.0" x2="0.0" y2="-136.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="-80.0" x2="176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="-80.0" x2="224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="80.0" x2="0.0" y2="112.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="80.0" x2="224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="128.0" y1="80.0" x2="176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="112.0" x2="-128.0" y2="80.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="112.0" x2="176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="112.0" x2="0.0" y2="128.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="80.0" x2="-224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="80.0" x2="0.0" y2="128.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-128.0" y1="80.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="-176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="-224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="-176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="-104.0" x2="0.0" y2="-136.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="-104.0" x2="-176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="-104.0" x2="0.0" y2="-136.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-136.0" x2="176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-136.0" x2="0.0" y2="-136.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-136.0" x2="176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="-104.0" x2="224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="-104.0" x2="176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="-104.0" x2="224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="224.0" y1="-0.0" x2="176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="224.0" y1="-0.0" x2="224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="224.0" y1="-0.0" x2="176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="104.0" x2="0.0" y2="128.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="104.0" x2="176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="104.0" x2="0.0" y2="128.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="128.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="128.0" x2="0.0" y2="128.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="128.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="104.0" x2="-224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="104.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="-176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-224.0" y1="-0.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="-104.0" x2="0.0" y2="-136.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="-104.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-136.0" x2="176.0" y2="-104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="-136.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="-104.0" x2="224.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="-104.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="224.0" y1="-0.0" x2="176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="224.0" y1="-0.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="104.0" x2="0.0" y2="128.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="176.0" y1="104.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="128.0" x2="-176.0" y2="104.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="0.0" y1="128.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <line x1="-176.0" y1="104.0" x2="0.0" y2="-0.0" stroke="#1a1a4a" stroke-width="1.2" fill="none"/>
+    <circle cx="0.0" cy="-0.0" r="2" fill="#1a1a4a"/>
+    <circle cx="-104.0" cy="-0.0" r="2" fill="#1a1a4a"/>
+    <circle cx="0.0" cy="-80.0" r="2" fill="#1a1a4a"/>
+    <circle cx="104.0" cy="-0.0" r="2" fill="#1a1a4a"/>
+    <circle cx="0.0" cy="80.0" r="2" fill="#1a1a4a"/>
+    <circle cx="-128.0" cy="-80.0" r="2" fill="#1a1a4a"/>
+    <circle cx="0.0" cy="-112.0" r="2" fill="#1a1a4a"/>
+    <circle cx="128.0" cy="-80.0" r="2" fill="#1a1a4a"/>
+    <circle cx="128.0" cy="80.0" r="2" fill="#1a1a4a"/>
+    <circle cx="0.0" cy="112.0" r="2" fill="#1a1a4a"/>
+    <circle cx="-128.0" cy="80.0" r="2" fill="#1a1a4a"/>
+    <circle cx="-224.0" cy="-0.0" r="2" fill="#1a1a4a"/>
+    <circle cx="-176.0" cy="-104.0" r="2" fill="#1a1a4a"/>
+    <circle cx="0.0" cy="-136.0" r="2" fill="#1a1a4a"/>
+    <circle cx="176.0" cy="-104.0" r="2" fill="#1a1a4a"/>
+    <circle cx="224.0" cy="-0.0" r="2" fill="#1a1a4a"/>
+    <circle cx="176.0" cy="104.0" r="2" fill="#1a1a4a"/>
+    <circle cx="0.0" cy="128.0" r="2" fill="#1a1a4a"/>
+    <circle cx="-176.0" cy="104.0" r="2" fill="#1a1a4a"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+# PILO Materials
+
+newmtl pilo_fabric
+Ka 0.15 0.15 0.16
+Kd 0.55 0.56 0.58
+Ks 0.03 0.03 0.03
+Ns 8.0
+d 1.0
+illum 2
+
+newmtl pilo_blue
+Ka 0.04 0.08 0.18
+Kd 0.14 0.33 0.62
+Ks 0.02 0.02 0.04
+Ns 8.0
+d 1.0
+illum 2
