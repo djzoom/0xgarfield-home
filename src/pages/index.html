@@ -60,9 +60,9 @@
     <main class="page">
         <section class="hero section-anchor">
             <div class="hero-copy" data-reveal>
-                <h1>Sound · System · Performance</h1>
-                <p class="hero-lede">
-                    Founder, Soundario · PILO · Run Baby Run® · Talktalk
+                <h1 data-editable="index.hero.heading">{{content.index.hero.heading}}</h1>
+                <p class="hero-lede" data-editable="index.hero.lede">
+                    {{content.index.hero.lede}}
                 </p>
                 <div class="hero-actions">
                     <button type="button" class="btn btn-primary" data-scroll="overview">Work</button>
@@ -72,7 +72,7 @@
         </section>
 
         <section class="credibility-strip" aria-label="Recognized by">
-            <p class="eyebrow">Awards, partners &amp; institutions</p>
+            <p class="eyebrow" data-editable="index.credibility.eyebrow">{{content.index.credibility.eyebrow}}</p>
             <ul class="credibility-list">
                 <li>Red Dot</li>
                 <li>A' Design</li>
@@ -84,18 +84,18 @@
                 <li>China Radio International</li>
                 <li>Phoenix U Radio</li>
             </ul>
-            <p class="credibility-foot"><a href="{{site.recognitionEnPath}}">See full list of awards, press, juries &amp; engagements →</a></p>
+            <p class="credibility-foot"><a href="{{site.recognitionEnPath}}" data-editable="index.credibility.foot">{{content.index.credibility.foot}}</a></p>
         </section>
 
         <section class="now-section" id="now" data-section>
             <div class="now-inner" data-reveal>
-                <p class="eyebrow">Now</p>
-                <h2>A category, not a product.</h2>
-                <p>Broadcast, music production, hardware — twenty years, one thread.</p>
+                <p class="eyebrow" data-editable="index.now.eyebrow">{{content.index.now.eyebrow}}</p>
+                <h2 data-editable="index.now.heading">{{content.index.now.heading}}</h2>
+                <p data-editable="index.now.body">{{content.index.now.body}}</p>
                 <ul class="now-axes">
-                    <li><span class="axis-label">Expression</span><span class="axis-copy">Talktalk. Real-time spoken expression.</span></li>
-                    <li><span class="axis-label">Attention</span><span class="axis-copy">Adaptive audio. Sense state, shape sound.</span></li>
-                    <li><span class="axis-label">Performance</span><span class="axis-copy">PILO + Run Baby Run® extended to AI.</span></li>
+                    <li><span class="axis-label" data-editable="index.now.axis1.label">{{content.index.now.axis1.label}}</span><span class="axis-copy" data-editable="index.now.axis1.copy">{{content.index.now.axis1.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="index.now.axis2.label">{{content.index.now.axis2.label}}</span><span class="axis-copy" data-editable="index.now.axis2.copy">{{content.index.now.axis2.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="index.now.axis3.label">{{content.index.now.axis3.label}}</span><span class="axis-copy" data-editable="index.now.axis3.copy">{{content.index.now.axis3.copy}}</span></li>
                 </ul>
                 <p class="now-links">
                     <a href="{{site.aboutEnPath}}">About →</a>
@@ -169,8 +169,8 @@
 
         <section class="overview section-anchor" id="overview" data-section>
             <div class="section-heading" data-reveal>
-                <p class="eyebrow">Work</p>
-                <h2>Three projects, one thesis.</h2>
+                <p class="eyebrow" data-editable="index.overview.eyebrow">{{content.index.overview.eyebrow}}</p>
+                <h2 data-editable="index.overview.heading">{{content.index.overview.heading}}</h2>
             </div>
 
             <div class="project-grid">
@@ -189,8 +189,8 @@
                         </button>
                     </figure>
                     <p class="proof-tag">PILO</p>
-                    <h3>Nighttime companionship, market-tested.</h3>
-                    <p>Music-driven sleep system. Five international design awards. Brookstone, JD, Amazon US &amp; Japan.</p>
+                    <h3 data-editable="index.pilo.title">{{content.index.pilo.title}}</h3>
+                    <p data-editable="index.pilo.desc">{{content.index.pilo.desc}}</p>
                     <div class="project-evidence" aria-label="PILO evidence">
                         <div class="evidence-group">
                             <span class="project-note-label">Awards</span>
@@ -229,8 +229,8 @@
                             loading="lazy">
                     </figure>
                     <p class="proof-tag">Run Baby Run®</p>
-                    <h3>Cadence as pace.</h3>
-                    <p>Rhythm-guided running music. Nike Shanghai Marathon official soundtrack.</p>
+                    <h3 data-editable="index.rbr.title">{{content.index.rbr.title}}</h3>
+                    <p data-editable="index.rbr.desc">{{content.index.rbr.desc}}</p>
                     <div class="project-evidence" aria-label="Run Baby Run evidence">
                         <div class="evidence-group">
                             <span class="project-note-label">Partner</span>
@@ -275,9 +275,9 @@
                             <span>Performance</span>
                         </div>
                     </div>
-                    <p class="proof-tag">Current — Talktalk</p>
-                    <h3>The first wedge of AI audio.</h3>
-                    <p>Spoken expression under pressure, intervened in real time. Sound as dose, not delivery.</p>
+                    <p class="proof-tag" data-editable="index.talktalk.tag">{{content.index.talktalk.tag}}</p>
+                    <h3 data-editable="index.talktalk.title">{{content.index.talktalk.title}}</h3>
+                    <p data-editable="index.talktalk.desc">{{content.index.talktalk.desc}}</p>
                     <div class="project-evidence" aria-label="Talktalk and related work">
                         <div class="evidence-group">
                             <span class="project-note-label">System</span>
@@ -308,12 +308,12 @@
         <section class="links section-anchor" id="links" data-section>
             <div class="contact-card" data-reveal>
                 <div>
-                    <p class="eyebrow">Contact</p>
-                    <h2>Press · Partnerships · Projects</h2>
+                    <p class="eyebrow" data-editable="index.contact.eyebrow">{{content.index.contact.eyebrow}}</p>
+                    <h2 data-editable="index.contact.heading">{{content.index.contact.heading}}</h2>
                 </div>
 
                 <div class="contact-columns">
-                    <p>Email is fastest.</p>
+                    <p data-editable="index.contact.body">{{content.index.contact.body}}</p>
                     <div class="contact-actions">
                         <div class="contact-buttons">
                             <a class="btn btn-primary" data-email-link data-email-context="links"

@@ -59,14 +59,12 @@
 
     <main class="page page-prose">
         <article class="prose-article" data-reveal>
-            <p class="eyebrow">Recognition</p>
-            <h1>Awards, press, juries &amp; engagements.</h1>
-            <p class="prose-lede">
-                Public record. Updated as new items land.
-            </p>
+            <p class="eyebrow" data-editable="recognition.eyebrow">{{content.recognition.eyebrow}}</p>
+            <h1 data-editable="recognition.heading">{{content.recognition.heading}}</h1>
+            <p class="prose-lede" data-editable="recognition.lede">{{content.recognition.lede}}</p>
 
             <section class="record-section">
-                <h2>Design awards — PILO</h2>
+                <h2 data-editable="recognition.awards.heading">{{content.recognition.awards.heading}}</h2>
                 <div class="record-wall">
                     <figure class="record-disc is-top">
                         <a class="record-disc-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Red Dot Award — view entry">
@@ -102,7 +100,7 @@
             </section>
 
             <section class="record-section">
-                <h2>Commercial partnerships &amp; channels</h2>
+                <h2 data-editable="recognition.commercial.heading">{{content.recognition.commercial.heading}}</h2>
                 <div class="record-wall">
                     <figure class="record-disc is-nike">
                         <a class="record-disc-link" href="{{references.nikeMediaUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Nike Shanghai Marathon — Nike media page">
@@ -117,11 +115,11 @@
                         <figcaption class="record-caption"><b>Brookstone</b><span>PILO retail · China</span></figcaption>
                     </figure>
                 </div>
-                <p class="record-note">Nike Shanghai Marathon — Music Director. PILO also on JD and Amazon (US, Japan).</p>
+                <p class="record-note" data-editable="recognition.commercial.note">{{content.recognition.commercial.note}}</p>
             </section>
 
             <section class="record-section">
-                <h2>Institutional roles</h2>
+                <h2 data-editable="recognition.institutional.heading">{{content.recognition.institutional.heading}}</h2>
                 <ul class="record-list">
                     <li class="record-row">
                         <span class="record-name">China Radio International Hit FM</span>
@@ -139,7 +137,7 @@
             </section>
 
             <section class="record-section">
-                <h2>Juries &amp; expert service</h2>
+                <h2 data-editable="recognition.juries.heading">{{content.recognition.juries.heading}}</h2>
                 <ul class="record-list">
                     <li class="record-row">
                         <span class="record-name">Emmy Awards — Sound category jury</span>
@@ -149,7 +147,7 @@
             </section>
 
             <section class="record-section">
-                <h2>Press &amp; features</h2>
+                <h2 data-editable="recognition.press.heading">{{content.recognition.press.heading}}</h2>
                 <div class="record-wall">
                     <figure class="record-disc is-left">
                         <a class="record-disc-link" href="images/archive-mens-health.jpg" target="_blank" rel="noopener noreferrer" aria-label="Men's Health Run Baby Run feature — open full image">
@@ -176,12 +174,12 @@
                         <a class="record-link" href="{{references.runBabyRunWeiboUrl}}" target="_blank" rel="noopener noreferrer">Original launch →</a>
                     </li>
                 </ul>
-                <p class="record-note">Additional materials on request.</p>
+                <p class="record-note" data-editable="recognition.press.note">{{content.recognition.press.note}}</p>
             </section>
 
             <section class="record-section">
-                <h2>Notable artist engagements</h2>
-                <p>Interviews and collaborations include:</p>
+                <h2 data-editable="recognition.artists.heading">{{content.recognition.artists.heading}}</h2>
+                <p data-editable="recognition.artists.intro">{{content.recognition.artists.intro}}</p>
                 <ul class="record-inline">
                     <li>Mark Ronson</li>
                     <li>Maroon 5</li>

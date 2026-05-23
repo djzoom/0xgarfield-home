@@ -59,32 +59,30 @@
 
     <main class="page page-prose">
         <article class="prose-article" data-reveal>
-            <p class="eyebrow">文字</p>
-            <h1>工作笔记。</h1>
-            <p class="prose-lede">
-                声音、AI、神经系统。新文章先在这里。
-            </p>
+            <p class="eyebrow" data-editable="writing.eyebrow">{{content.writing.eyebrow}}</p>
+            <h1 data-editable="writing.heading">{{content.writing.heading}}</h1>
+            <p class="prose-lede" data-editable="writing.lede">{{content.writing.lede}}</p>
 
             <ul class="writing-list">
                 <li class="writing-row">
-                    <p class="writing-status">写作中 · 2026</p>
-                    <h2 class="writing-title">声音不止于播放。</h2>
-                    <p class="writing-desc">论点宣言。声音主动作用于人，为何 2026 终于可做。</p>
+                    <p class="writing-status" data-editable="writing.article1.status">{{content.writing.article1.status}}</p>
+                    <h2 class="writing-title" data-editable="writing.article1.title">{{content.writing.article1.title}}</h2>
+                    <p class="writing-desc" data-editable="writing.article1.desc">{{content.writing.article1.desc}}</p>
                 </li>
                 <li class="writing-row">
-                    <p class="writing-status">写作中 · 2026</p>
-                    <h2 class="writing-title">把 PILO 卖给数万睡眠用户，我们学到了什么。</h2>
-                    <p class="writing-desc">九年睡眠数据。音乐在入睡边缘做了什么。</p>
+                    <p class="writing-status" data-editable="writing.article2.status">{{content.writing.article2.status}}</p>
+                    <h2 class="writing-title" data-editable="writing.article2.title">{{content.writing.article2.title}}</h2>
+                    <p class="writing-desc" data-editable="writing.article2.desc">{{content.writing.article2.desc}}</p>
                 </li>
                 <li class="writing-row">
-                    <p class="writing-status">写作中 · 2026</p>
-                    <h2 class="writing-title">状态自适应音频：AI 改变了声音设计的什么。</h2>
-                    <p class="writing-desc">架构、开放问题、Talktalk 早期结果。</p>
+                    <p class="writing-status" data-editable="writing.article3.status">{{content.writing.article3.status}}</p>
+                    <h2 class="writing-title" data-editable="writing.article3.title">{{content.writing.article3.title}}</h2>
+                    <p class="writing-desc" data-editable="writing.article3.desc">{{content.writing.article3.desc}}</p>
                 </li>
             </ul>
 
             <section class="prose-section prose-section-tight">
-                <p class="prose-note">写完即发。邮件订阅。</p>
+                <p class="prose-note" data-editable="writing.note">{{content.writing.note}}</p>
                 <p class="prose-contact">
                     <a class="btn btn-primary" data-email-link data-email-context="writing" data-email-mode="address">邮件订阅</a>
                     <a class="btn btn-secondary" href="{{site.homeZhPath}}#overview">回到项目</a>

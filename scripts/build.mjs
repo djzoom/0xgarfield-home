@@ -8,6 +8,8 @@ const srcPagesDir = path.join(projectRoot, "src", "pages");
 const publicDir = path.join(projectRoot, "public");
 const distDir = path.join(projectRoot, "dist");
 const configPath = path.join(projectRoot, "config", "site.json");
+const contentEnPath = path.join(projectRoot, "config", "content-en.json");
+const contentZhPath = path.join(projectRoot, "config", "content-zh.json");
 
 const routeAliases = new Map([
   ["index-zh.html", path.join("index-zh", "index.html")],
@@ -73,7 +75,10 @@ async function copyDirectoryContents(sourceDir, targetDir) {
 
 export async function buildSite() {
   const config = JSON.parse(await readFile(configPath, "utf8"));
-  const variables = flattenConfig(config);
+  const baseVariables = flattenConfig(config);
+
+  const contentEn = JSON.parse(await readFile(contentEnPath, "utf8"));
+  const contentZh = JSON.parse(await readFile(contentZhPath, "utf8"));
 
   await rm(distDir, { recursive: true, force: true });
   await mkdir(distDir, { recursive: true });
@@ -81,6 +86,13 @@ export async function buildSite() {
 
   const pageFilenames = (await readdir(srcPagesDir)).filter((filename) => filename.endsWith(".html"));
   for (const filename of pageFilenames) {
+    const isZh = filename.includes("-zh");
+    const content = isZh ? contentZh : contentEn;
+    const variables = { ...baseVariables };
+    for (const [key, value] of Object.entries(content)) {
+      variables[`content.${key}`] = value;
+    }
+
     const sourcePath = path.join(srcPagesDir, filename);
     const outputPath = path.join(distDir, filename);
     const template = await readFile(sourcePath, "utf8");

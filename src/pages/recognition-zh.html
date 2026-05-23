@@ -59,14 +59,12 @@
 
     <main class="page page-prose">
         <article class="prose-article" data-reveal>
-            <p class="eyebrow">荣誉</p>
-            <h1>奖项、媒体、评审与合作。</h1>
-            <p class="prose-lede">
-                公开记录。持续更新。
-            </p>
+            <p class="eyebrow" data-editable="recognition.eyebrow">{{content.recognition.eyebrow}}</p>
+            <h1 data-editable="recognition.heading">{{content.recognition.heading}}</h1>
+            <p class="prose-lede" data-editable="recognition.lede">{{content.recognition.lede}}</p>
 
             <section class="record-section">
-                <h2>设计奖项 —— PILO</h2>
+                <h2 data-editable="recognition.awards.heading">{{content.recognition.awards.heading}}</h2>
                 <div class="record-wall">
                     <figure class="record-disc is-top">
                         <a class="record-disc-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Red Dot Award —— 查看项目页">
@@ -102,7 +100,7 @@
             </section>
 
             <section class="record-section">
-                <h2>商业合作与渠道</h2>
+                <h2 data-editable="recognition.commercial.heading">{{content.recognition.commercial.heading}}</h2>
                 <div class="record-wall">
                     <figure class="record-disc is-nike">
                         <a class="record-disc-link" href="{{references.nikeMediaUrl}}" target="_blank" rel="noopener noreferrer" aria-label="耐克上海马拉松 —— Nike 媒体页">
@@ -117,11 +115,11 @@
                         <figcaption class="record-caption"><b>Brookstone</b><span>PILO 线下渠道 · 中国</span></figcaption>
                     </figure>
                 </div>
-                <p class="record-note">耐克上海马拉松——音乐总监。PILO 另在京东与 Amazon（US、Japan）销售。</p>
+                <p class="record-note" data-editable="recognition.commercial.note">{{content.recognition.commercial.note}}</p>
             </section>
 
             <section class="record-section">
-                <h2>机构角色</h2>
+                <h2 data-editable="recognition.institutional.heading">{{content.recognition.institutional.heading}}</h2>
                 <ul class="record-list">
                     <li class="record-row">
                         <span class="record-name">中国国际广播电台 Hit FM</span>
@@ -139,7 +137,7 @@
             </section>
 
             <section class="record-section">
-                <h2>评审与专家服务</h2>
+                <h2 data-editable="recognition.juries.heading">{{content.recognition.juries.heading}}</h2>
                 <ul class="record-list">
                     <li class="record-row">
                         <span class="record-name">Emmy 奖 —— 声音单元评委</span>
@@ -149,7 +147,7 @@
             </section>
 
             <section class="record-section">
-                <h2>媒体报道</h2>
+                <h2 data-editable="recognition.press.heading">{{content.recognition.press.heading}}</h2>
                 <div class="record-wall">
                     <figure class="record-disc is-left">
                         <a class="record-disc-link" href="images/archive-mens-health.jpg" target="_blank" rel="noopener noreferrer" aria-label="Men's Health Run Baby Run 专题 —— 打开完整图">
@@ -176,12 +174,12 @@
                         <a class="record-link" href="{{references.runBabyRunWeiboUrl}}" target="_blank" rel="noopener noreferrer">首发链接 →</a>
                     </li>
                 </ul>
-                <p class="record-note">更多资料可来信索取。</p>
+                <p class="record-note" data-editable="recognition.press.note">{{content.recognition.press.note}}</p>
             </section>
 
             <section class="record-section">
-                <h2>重要艺人对话</h2>
-                <p>访谈与对话：</p>
+                <h2 data-editable="recognition.artists.heading">{{content.recognition.artists.heading}}</h2>
+                <p data-editable="recognition.artists.intro">{{content.recognition.artists.intro}}</p>
                 <ul class="record-inline">
                     <li>Mark Ronson</li>
                     <li>Maroon 5</li>

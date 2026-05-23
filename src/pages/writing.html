@@ -59,32 +59,30 @@
 
     <main class="page page-prose">
         <article class="prose-article" data-reveal>
-            <p class="eyebrow">Writing</p>
-            <h1>Notes from the workshop.</h1>
-            <p class="prose-lede">
-                Essays on sound, AI, and the nervous system. New work lands here first.
-            </p>
+            <p class="eyebrow" data-editable="writing.eyebrow">{{content.writing.eyebrow}}</p>
+            <h1 data-editable="writing.heading">{{content.writing.heading}}</h1>
+            <p class="prose-lede" data-editable="writing.lede">{{content.writing.lede}}</p>
 
             <ul class="writing-list">
                 <li class="writing-row">
-                    <p class="writing-status">Drafting · 2026</p>
-                    <h2 class="writing-title">Audio as dose, not delivery.</h2>
-                    <p class="writing-desc">The thesis. Why sound-as-dose is finally tractable — and what it changes.</p>
+                    <p class="writing-status" data-editable="writing.article1.status">{{content.writing.article1.status}}</p>
+                    <h2 class="writing-title" data-editable="writing.article1.title">{{content.writing.article1.title}}</h2>
+                    <p class="writing-desc" data-editable="writing.article1.desc">{{content.writing.article1.desc}}</p>
                 </li>
                 <li class="writing-row">
-                    <p class="writing-status">Drafting · 2026</p>
-                    <h2 class="writing-title">What we learned shipping PILO to tens of thousands of sleepers.</h2>
-                    <p class="writing-desc">Nine years of data on music at the edge of sleep. What it implies for AI.</p>
+                    <p class="writing-status" data-editable="writing.article2.status">{{content.writing.article2.status}}</p>
+                    <h2 class="writing-title" data-editable="writing.article2.title">{{content.writing.article2.title}}</h2>
+                    <p class="writing-desc" data-editable="writing.article2.desc">{{content.writing.article2.desc}}</p>
                 </li>
                 <li class="writing-row">
-                    <p class="writing-status">Drafting · 2026</p>
-                    <h2 class="writing-title">State-adaptive audio: what AI changes about sound design.</h2>
-                    <p class="writing-desc">Architecture, open problems, early Talktalk results.</p>
+                    <p class="writing-status" data-editable="writing.article3.status">{{content.writing.article3.status}}</p>
+                    <h2 class="writing-title" data-editable="writing.article3.title">{{content.writing.article3.title}}</h2>
+                    <p class="writing-desc" data-editable="writing.article3.desc">{{content.writing.article3.desc}}</p>
                 </li>
             </ul>
 
             <section class="prose-section prose-section-tight">
-                <p class="prose-note">Ships when it ships. Email to subscribe.</p>
+                <p class="prose-note" data-editable="writing.note">{{content.writing.note}}</p>
                 <p class="prose-contact">
                     <a class="btn btn-primary" data-email-link data-email-context="writing" data-email-mode="address">Email to subscribe</a>
                     <a class="btn btn-secondary" href="{{site.homeEnPath}}#overview">Back to work</a>

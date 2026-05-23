@@ -60,10 +60,8 @@
     <main class="page">
         <section class="hero section-anchor">
             <div class="hero-copy" data-reveal>
-                <h1>声音 · 系统 · 表现</h1>
-                <p class="hero-lede">
-                    Soundario 创始人 · PILO · Run Baby Run® · Talktalk
-                </p>
+                <h1 data-editable="index.hero.heading">{{content.index.hero.heading}}</h1>
+                <p class="hero-lede" data-editable="index.hero.lede">{{content.index.hero.lede}}</p>
                 <div class="hero-actions">
                     <button type="button" class="btn btn-primary" data-scroll="overview">项目</button>
                     <a class="btn btn-secondary" data-email-link data-email-context="hero" data-email-mode="cta">联系</a>
@@ -72,7 +70,7 @@
         </section>
 
         <section class="credibility-strip" aria-label="奖项、合作与机构">
-            <p class="eyebrow">奖项、合作与机构</p>
+            <p class="eyebrow" data-editable="index.credibility.eyebrow">{{content.index.credibility.eyebrow}}</p>
             <ul class="credibility-list">
                 <li>Red Dot</li>
                 <li>A' Design</li>
@@ -84,18 +82,18 @@
                 <li>中国国际广播电台</li>
                 <li>凤凰 U Radio</li>
             </ul>
-            <p class="credibility-foot"><a href="{{site.recognitionZhPath}}">完整奖项、媒体、评审、合作清单 →</a></p>
+            <p class="credibility-foot"><a href="{{site.recognitionZhPath}}" data-editable="index.credibility.foot">{{content.index.credibility.foot}}</a></p>
         </section>
 
         <section class="now-section" id="now" data-section>
             <div class="now-inner" data-reveal>
-                <p class="eyebrow">现在</p>
-                <h2>一个赛道，不止一个产品。</h2>
-                <p>广播、音乐制作、硬件——二十年汇成一条线。</p>
+                <p class="eyebrow" data-editable="index.now.eyebrow">{{content.index.now.eyebrow}}</p>
+                <h2 data-editable="index.now.heading">{{content.index.now.heading}}</h2>
+                <p data-editable="index.now.body">{{content.index.now.body}}</p>
                 <ul class="now-axes">
-                    <li><span class="axis-label">表达 Expression</span><span class="axis-copy">Talktalk。实时口语工具。</span></li>
-                    <li><span class="axis-label">专注 Attention</span><span class="axis-copy">自适应音频。感知状态，塑形声音。</span></li>
-                    <li><span class="axis-label">表现 Performance</span><span class="axis-copy">PILO + Run Baby Run® 延伸至 AI。</span></li>
+                    <li><span class="axis-label" data-editable="index.now.axis1.label">{{content.index.now.axis1.label}}</span><span class="axis-copy" data-editable="index.now.axis1.copy">{{content.index.now.axis1.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="index.now.axis2.label">{{content.index.now.axis2.label}}</span><span class="axis-copy" data-editable="index.now.axis2.copy">{{content.index.now.axis2.copy}}</span></li>
+                    <li><span class="axis-label" data-editable="index.now.axis3.label">{{content.index.now.axis3.label}}</span><span class="axis-copy" data-editable="index.now.axis3.copy">{{content.index.now.axis3.copy}}</span></li>
                 </ul>
                 <p class="now-links">
                     <a href="{{site.aboutZhPath}}">关于 →</a>
@@ -169,8 +167,8 @@
 
         <section class="overview section-anchor" id="overview" data-section>
             <div class="section-heading" data-reveal>
-                <p class="eyebrow">项目</p>
-                <h2>三个项目，一条线。</h2>
+                <p class="eyebrow" data-editable="index.overview.eyebrow">{{content.index.overview.eyebrow}}</p>
+                <h2 data-editable="index.overview.heading">{{content.index.overview.heading}}</h2>
             </div>
 
             <div class="project-grid">
@@ -188,8 +186,8 @@
                         </button>
                     </figure>
                     <p class="proof-tag">PILO</p>
-                    <h3>夜晚的陪伴，货架的检验。</h3>
-                    <p>音乐驱动的睡眠系统。五项国际设计奖。Brookstone、京东、Amazon US &amp; Japan。</p>
+                    <h3 data-editable="index.pilo.title">{{content.index.pilo.title}}</h3>
+                    <p data-editable="index.pilo.desc">{{content.index.pilo.desc}}</p>
                     <div class="project-evidence" aria-label="PILO 公开证据">
                         <div class="evidence-group">
                             <span class="project-note-label">奖项</span>
@@ -227,8 +225,8 @@
                         <img src="images/archive-nike-run-baby-run.png" alt="Run Baby Run 与耐克合作页面" loading="lazy">
                     </figure>
                     <p class="proof-tag">Run Baby Run®</p>
-                    <h3>节奏即配速。</h3>
-                    <p>节奏引导配速的跑步音乐。耐克上海马拉松官方配乐。</p>
+                    <h3 data-editable="index.rbr.title">{{content.index.rbr.title}}</h3>
+                    <p data-editable="index.rbr.desc">{{content.index.rbr.desc}}</p>
                     <div class="project-evidence" aria-label="Run Baby Run 公开证据">
                         <div class="evidence-group">
                             <span class="project-note-label">合作</span>
@@ -273,9 +271,9 @@
                             <span>表现</span>
                         </div>
                     </div>
-                    <p class="proof-tag">当前——Talktalk</p>
-                    <h3>AI 音频的第一块楔子。</h3>
-                    <p>压力下的口语表达，声音实时介入——来自新闻主播的致敬。</p>
+                    <p class="proof-tag" data-editable="index.talktalk.tag">{{content.index.talktalk.tag}}</p>
+                    <h3 data-editable="index.talktalk.title">{{content.index.talktalk.title}}</h3>
+                    <p data-editable="index.talktalk.desc">{{content.index.talktalk.desc}}</p>
                     <div class="project-evidence" aria-label="Talktalk 与相关方向">
                         <div class="evidence-group">
                             <span class="project-note-label">系统</span>
@@ -306,12 +304,12 @@
         <section class="links section-anchor" id="links" data-section>
             <div class="contact-card" data-reveal>
                 <div>
-                    <p class="eyebrow">联系</p>
-                    <h2>媒体 · 合作 · 项目</h2>
+                    <p class="eyebrow" data-editable="index.contact.eyebrow">{{content.index.contact.eyebrow}}</p>
+                    <h2 data-editable="index.contact.heading">{{content.index.contact.heading}}</h2>
                 </div>
 
                 <div class="contact-columns">
-                    <p>邮件最快。</p>
+                    <p data-editable="index.contact.body">{{content.index.contact.body}}</p>
                     <div class="contact-actions">
                         <div class="contact-buttons">
                             <a class="btn btn-primary" data-email-link data-email-context="links" data-email-mode="address">邮箱</a>
