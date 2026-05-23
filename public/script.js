@@ -281,20 +281,21 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
     });
 });
 
-// Secret admin activation: 5 clicks on .brand-mark within 3 seconds.
+// Secret admin activation: 5 clicks on brand area within 5 seconds.
 (function () {
-    const mark = document.querySelector(".brand-mark");
-    if (!mark) return;
+    const brand = document.querySelector(".brand");
+    if (!brand) return;
     const CLICKS = 5;
-    const WINDOW = 3000;
+    const WINDOW = 5000;
     let clicks = [];
     let loaded = false;
 
-    mark.addEventListener("click", () => {
+    brand.addEventListener("click", (e) => {
         if (loaded) return;
         const now = Date.now();
         clicks.push(now);
         clicks = clicks.filter((t) => now - t < WINDOW);
+        if (clicks.length >= 2) e.preventDefault();
         if (clicks.length >= CLICKS) {
             loaded = true;
             const s = document.createElement("script");
