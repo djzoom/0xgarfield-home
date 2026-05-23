@@ -14,11 +14,13 @@
     "writingZhPath": "writing-zh.html"
   },
   "assets": {
-    "cssVersion": "20260514-06",
-    "scriptVersion": "20260514-06"
+    "cssVersion": "20260523-01",
+    "scriptVersion": "20260522-01"
   },
   "projects": {
-    "talktalkUrl": "https://talktalk.0xgarfield.com/"
+    "talktalkUrl": "https://talktalk.0xgarfield.com/",
+    "piloViewerUrl": "https://djzoom.github.io/PILO/",
+    "piloRepoUrl": "https://github.com/djzoom/PILO"
   },
   "profiles": {
     "githubUrl": "https://github.com/djzoom",

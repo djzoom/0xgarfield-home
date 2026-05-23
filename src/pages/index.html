@@ -105,6 +105,69 @@
             </div>
         </section>
 
+        <section class="record-shelf" aria-label="Awards, press and partners on the record">
+            <div class="record-shelf-head" data-reveal>
+                <p class="eyebrow">On the record</p>
+                <a class="record-shelf-link" href="{{site.recognitionEnPath}}">All recognition →</a>
+            </div>
+            <div class="record-strip" data-reveal>
+                <figure class="record-disc is-top">
+                    <a class="record-disc-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Red Dot Award — view entry">
+                        <span class="disc"><img src="images/archive-red-dot-letter.jpg" alt="Red Dot Award 2016 winner letter for PILO" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>Red Dot Award</b><span>Germany · 2016</span></figcaption>
+                </figure>
+                <figure class="record-disc is-top">
+                    <a class="record-disc-link" href="{{references.aDesignUrl}}" target="_blank" rel="noopener noreferrer" aria-label="A' Design Award — view entry">
+                        <span class="disc"><img src="images/archive-a-design.jpg" alt="A' Design Award Silver certificate for PILO" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>A' Design Award</b><span>Italy · Silver, 2017</span></figcaption>
+                </figure>
+                <figure class="record-disc is-top">
+                    <a class="record-disc-link" href="images/archive-golden-pin.jpg" target="_blank" rel="noopener noreferrer" aria-label="Golden Pin Design Award certificate — open full image">
+                        <span class="disc"><img src="images/archive-golden-pin.jpg" alt="Golden Pin Design Award 2018 certificate for PILO" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>Golden Pin</b><span>Taiwan · 2018</span></figcaption>
+                </figure>
+                <figure class="record-disc is-top">
+                    <a class="record-disc-link" href="images/archive-plus-x.jpg" target="_blank" rel="noopener noreferrer" aria-label="Plus X Award certificate — open full image">
+                        <span class="disc"><img src="images/archive-plus-x.jpg" alt="Plus X Award certificate for PILO" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>Plus X Award</b><span>Germany · Innovation</span></figcaption>
+                </figure>
+                <figure class="record-disc is-top">
+                    <a class="record-disc-link" href="images/archive-k-design.jpg" target="_blank" rel="noopener noreferrer" aria-label="K-Design Award certificate — open full image">
+                        <span class="disc"><img src="images/archive-k-design.jpg" alt="K-Design Award 2019 Grand Prize certificate for PILO" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>K-Design Award</b><span>Korea · Grand Prize, 2019</span></figcaption>
+                </figure>
+                <figure class="record-disc">
+                    <a class="record-disc-link" href="images/archive-wired-germany.jpg" target="_blank" rel="noopener noreferrer" aria-label="WIRED Germany PILO feature — open full image">
+                        <span class="disc"><img src="images/archive-wired-germany.jpg" alt="WIRED Germany magazine feature on PILO" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>WIRED Germany</b><span>PILO feature</span></figcaption>
+                </figure>
+                <figure class="record-disc is-left">
+                    <a class="record-disc-link" href="images/archive-mens-health.jpg" target="_blank" rel="noopener noreferrer" aria-label="Men's Health Run Baby Run feature — open full image">
+                        <span class="disc"><img src="images/archive-mens-health.jpg" alt="Men's Health magazine feature on Run Baby Run" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>Men's Health</b><span>Run Baby Run® feature</span></figcaption>
+                </figure>
+                <figure class="record-disc is-nike">
+                    <a class="record-disc-link" href="{{references.nikeMediaUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Nike Shanghai Marathon — Nike media page">
+                        <span class="disc"><img src="images/archive-nike-run-baby-run.png" alt="Nike Shanghai Marathon Run Baby Run feature" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>Nike Shanghai Marathon</b><span>Run Baby Run® soundtrack</span></figcaption>
+                </figure>
+                <figure class="record-disc">
+                    <a class="record-disc-link" href="images/archive-brookstone-retail.jpg" target="_blank" rel="noopener noreferrer" aria-label="PILO at Brookstone retail — open full image">
+                        <span class="disc"><img src="images/archive-brookstone-retail.jpg" alt="PILO displayed in Brookstone retail" loading="lazy"></span>
+                    </a>
+                    <figcaption class="record-caption"><b>Brookstone</b><span>PILO retail · China</span></figcaption>
+                </figure>
+            </div>
+        </section>
+
         <section class="overview section-anchor" id="overview" data-section>
             <div class="section-heading" data-reveal>
                 <p class="eyebrow">Work</p>
@@ -113,9 +176,18 @@
 
             <div class="project-grid">
                 <article class="project-card" data-reveal>
-                    <figure class="project-media">
+                    <figure class="project-media" data-embed-figure
+                        data-embed-src="{{projects.piloViewerUrl}}"
+                        data-embed-title="PILO interactive 3D viewer"
+                        data-embed-open-label="Try 3D model"
+                        data-embed-close-label="Hide 3D">
                         <img src="images/archive-brookstone-retail.jpg" alt="PILO displayed in Brookstone retail"
                             loading="lazy">
+                        <button type="button" class="media-embed-toggle" data-embed-trigger
+                            aria-label="Open interactive 3D model of PILO">
+                            <span class="media-embed-toggle-text">Try 3D model</span>
+                            <span class="media-embed-toggle-arrow" aria-hidden="true">→</span>
+                        </button>
                     </figure>
                     <p class="proof-tag">PILO</p>
                     <h3>Turning the feeling of nighttime companionship into a product the market could actually test.</h3>

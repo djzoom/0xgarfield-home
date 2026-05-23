@@ -223,3 +223,60 @@ document.querySelectorAll("[data-copy-email]").forEach((button) => {
         }
     });
 });
+
+// Click-to-reveal media embed (e.g. PILO interactive 3D viewer).
+// Lazy: iframe is only created on user interaction.
+document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
+    const trigger = figure.querySelector("[data-embed-trigger]");
+    const src = figure.getAttribute("data-embed-src");
+    const title = figure.getAttribute("data-embed-title") || "Embedded viewer";
+    const openLabel = figure.getAttribute("data-embed-open-label") || "Open";
+    const closeLabel = figure.getAttribute("data-embed-close-label") || "Close";
+    if (!trigger || !src) return;
+
+    const labelEl = trigger.querySelector(".media-embed-toggle-text");
+    const arrowEl = trigger.querySelector(".media-embed-toggle-arrow");
+    let iframe = null;
+    let active = false;
+
+    const setLabel = (text, arrow) => {
+        if (labelEl) labelEl.textContent = text;
+        if (arrowEl) arrowEl.textContent = arrow;
+    };
+
+    const open = () => {
+        if (active) return;
+        active = true;
+        figure.dataset.embedActive = "true";
+        iframe = document.createElement("iframe");
+        iframe.className = "media-embed-frame";
+        iframe.src = src;
+        iframe.title = title;
+        iframe.loading = "lazy";
+        iframe.setAttribute("allow", "fullscreen; accelerometer; gyroscope");
+        iframe.setAttribute("allowfullscreen", "");
+        iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+        figure.appendChild(iframe);
+        setLabel(closeLabel, "×");
+        trigger.setAttribute("aria-pressed", "true");
+    };
+
+    const close = () => {
+        if (!active) return;
+        active = false;
+        figure.removeAttribute("data-embed-active");
+        if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
+        iframe = null;
+        setLabel(openLabel, "→");
+        trigger.setAttribute("aria-pressed", "false");
+    };
+
+    trigger.setAttribute("aria-pressed", "false");
+    trigger.addEventListener("click", () => {
+        if (active) {
+            close();
+        } else {
+            open();
+        }
+    });
+});
