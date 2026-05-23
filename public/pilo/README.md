@@ -2,7 +2,7 @@
 
 **Sound Sleep with Sound**
 
-**[Interactive 3D Viewer](https://djzoom.github.io/PILO/)**
+**[Interactive 3D Viewer](https://www.0xgarfield.com/pilo/)**
 
 <p align="center">
   <img src="images/pilo-front.jpg" alt="PILO" width="720">
@@ -79,7 +79,7 @@ The complete mesh — 32 vertices, 60 triangles, 52 product facets — is includ
 
 ### Interactive Viewer
 
-The **[3D Viewer](https://djzoom.github.io/PILO/)** runs in-browser (Three.js):
+The **[3D Viewer](https://www.0xgarfield.com/pilo/)** runs in-browser (Three.js):
 
 - **Click** the pillow to poke it — memory foam physics simulation
 - **Rebound** — slow-recovery material demo
