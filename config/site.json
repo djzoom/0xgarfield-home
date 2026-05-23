@@ -19,8 +19,10 @@
   },
   "projects": {
     "talktalkUrl": "https://talktalk.0xgarfield.com/",
-    "piloViewerUrl": "https://djzoom.github.io/PILO/",
-    "piloRepoUrl": "https://github.com/djzoom/PILO"
+    "piloViewerUrl": "/pilo/",
+    "piloRepoUrl": "https://github.com/djzoom/PILO",
+    "piloLogoUrl": "/pilo/logo/pilo-logo.svg",
+    "piloLogoWhiteUrl": "/pilo/logo/pilo-logo-white.svg"
   },
   "profiles": {
     "githubUrl": "https://github.com/djzoom",
