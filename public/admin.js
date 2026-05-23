@@ -89,6 +89,7 @@
                 btn.disabled = false;
                 return;
             }
+            localStorage.setItem("cms_pending_" + lang, JSON.stringify(changes));
             btn.textContent = "Saved";
             setTimeout(() => exitEditMode(), 1200);
         } catch (e) {

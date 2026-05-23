@@ -281,6 +281,25 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
     });
 });
 
+// Apply pending CMS edits from localStorage (instant, no build wait).
+(function () {
+    var lang = document.documentElement.lang === "zh-Hans" ? "zh" : "en";
+    var raw = localStorage.getItem("cms_pending_" + lang);
+    if (!raw) return;
+    try {
+        var changes = JSON.parse(raw);
+        var applied = 0;
+        document.querySelectorAll("[data-editable]").forEach(function (el) {
+            var key = el.dataset.editable;
+            if (key in changes && el.textContent.trim() !== changes[key]) {
+                el.textContent = changes[key];
+                applied++;
+            }
+        });
+        if (applied === 0) localStorage.removeItem("cms_pending_" + lang);
+    } catch (e) { localStorage.removeItem("cms_pending_" + lang); }
+})();
+
 // Secret admin activation: 5 clicks on brand area within 5 seconds.
 (function () {
     const brand = document.querySelector(".brand");
