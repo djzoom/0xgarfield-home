@@ -298,7 +298,7 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         if (clicks.length >= CLICKS) {
             loaded = true;
             const s = document.createElement("script");
-            s.src = "admin.js?v=" + Date.now();
+            s.src = "/admin.js?v=" + Date.now();
             document.body.appendChild(s);
         }
     });
