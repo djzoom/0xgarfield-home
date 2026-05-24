@@ -1299,9 +1299,15 @@ button:focus-visible {
     display: flex;
     gap: var(--space-5);
     overflow-x: auto;
-    padding: 0.5rem 0 var(--space-3);
+    overflow-y: hidden;
+    /* generous padding so disc shadows aren't clipped by the scroll box;
+       negative margins realign the strip with the rest of the page */
+    padding: 1.5rem 1rem 3rem;
+    margin: -0.75rem -1rem -1.5rem;
     scroll-snap-type: x proximity;
+    scroll-padding-left: 1rem;
     scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
 }
 
 .record-strip .record-disc {
