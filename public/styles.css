@@ -1,6 +1,6 @@
 /* ==========================================================================
  * Garfield Wang · 0xgarfield.com
- * Unified founder-grade visual system. Cream + serif, content-first.
+ * Unified founder-grade visual system. Cool off-white + Geist sans, content-first.
  * ==========================================================================
  *
  * Layers (top to bottom):
@@ -122,13 +122,13 @@ button,
 
 a:focus-visible,
 button:focus-visible {
-    outline: 2px solid rgba(141, 90, 60, 0.55);
+    outline: 2px solid rgba(37, 99, 235, 0.6);
     outline-offset: 3px;
     border-radius: 4px;
 }
 
 ::selection {
-    background: rgba(157, 96, 61, 0.30);
+    background: rgba(37, 99, 235, 0.16);
     color: var(--ink);
 }
 
@@ -295,7 +295,7 @@ button:focus-visible {
     letter-spacing: -0.005em;
     line-height: 1.3;
     border: 1px solid transparent;
-    transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+    transition: background 160ms ease, color 160ms ease, border-color 160ms ease, transform 160ms ease;
     cursor: pointer;
     text-decoration: none;
 }
@@ -320,6 +320,14 @@ button:focus-visible {
 .btn-secondary:hover {
     border-color: var(--ink);
     background: rgba(25, 21, 18, 0.04);
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(1px);
 }
 
 /* ----- Type tokens ------------------------------------------------------- */
@@ -683,7 +691,7 @@ button:focus-visible {
     display: grid;
     place-items: center;
     background:
-        radial-gradient(circle at 30% 30%, rgba(157, 96, 61, 0.08), transparent 55%),
+        radial-gradient(circle at 30% 30%, rgba(10, 10, 10, 0.05), transparent 55%),
         var(--bg-soft);
     color: var(--accent-deep);
 }
@@ -1157,6 +1165,10 @@ button:focus-visible {
     transform: translateY(-2px);
 }
 
+.record-disc-link:active {
+    transform: translateY(0) scale(0.985);
+}
+
 /* the disc itself */
 .disc {
     position: relative;
@@ -1226,7 +1238,7 @@ button:focus-visible {
 }
 
 .record-disc-link:focus-visible {
-    outline: 2px solid rgba(141, 90, 60, 0.55);
+    outline: 2px solid rgba(37, 99, 235, 0.6);
     outline-offset: 4px;
 }
 
