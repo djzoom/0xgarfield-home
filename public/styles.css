@@ -1793,6 +1793,17 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; bo
     .project-card:hover { transform: none; box-shadow: var(--bru-sh); }
 }
 
+/* English mobile header: long nav labels overflowed/overlapped the brand.
+   Give the nav its own full-width row (brand + lang switch stay on row 1). */
+@media (max-width: 720px) {
+    html[lang="en"] .header-inner { flex-wrap: wrap; row-gap: 0.45rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+    html[lang="en"] .header-actions { display: contents; }
+    html[lang="en"] .brand { order: 1; }
+    html[lang="en"] .lang-switch { order: 2; margin-left: auto; }
+    html[lang="en"] .primary-nav { order: 3; flex-basis: 100%; width: 100%; flex-wrap: wrap; gap: 0.4rem 1.05rem; }
+    html[lang="en"] .nav-link { font-size: 0.72rem; }
+}
+
 /* ----- Reduced motion --------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
