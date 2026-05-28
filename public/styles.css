@@ -1713,7 +1713,7 @@ button:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; bo
     border-radius: 50%;
     border: 2px solid var(--ink);
     background-color: var(--ink);
-    background-image: url("images/portrait-mark.jpg");
+    background-image: url("images/portrait-mark.jpg?v=2");
     background-size: cover;
     background-position: 50% 42%;
     color: transparent;
