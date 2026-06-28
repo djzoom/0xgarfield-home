@@ -13,6 +13,7 @@ const contentZhPath = path.join(projectRoot, "config", "content-zh.json");
 
 const routeAliases = new Map([
   ["index-zh.html", path.join("index-zh", "index.html")],
+  ["home.html", path.join("home", "index.html")],
   ["about.html", path.join("about", "index.html")],
   ["about-zh.html", path.join("about-zh", "index.html")],
   ["recognition.html", path.join("recognition", "index.html")],
