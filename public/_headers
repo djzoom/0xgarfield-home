@@ -1,3 +1,13 @@
+# HTML — let scrapers see fresh meta tags right after we ship
+/
+  Cache-Control: public, max-age=60, must-revalidate
+/*.html
+  Cache-Control: public, max-age=60, must-revalidate
+/about
+  Cache-Control: public, max-age=60, must-revalidate
+/about-zh
+  Cache-Control: public, max-age=60, must-revalidate
+
 /*
   X-Frame-Options: SAMEORIGIN
   X-Content-Type-Options: nosniff
