@@ -225,30 +225,41 @@ document.querySelectorAll("[data-copy-email]").forEach((button) => {
 });
 
 // Click-to-reveal media embed (e.g. PILO interactive 3D viewer).
-// Lazy: iframe is only created on user interaction.
+// Opens as a full-viewport modal so the 3D model has real room to move.
 document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
     const trigger = figure.querySelector("[data-embed-trigger]");
     const src = figure.getAttribute("data-embed-src");
     const title = figure.getAttribute("data-embed-title") || "Embedded viewer";
-    const openLabel = figure.getAttribute("data-embed-open-label") || "Open";
-    const closeLabel = figure.getAttribute("data-embed-close-label") || "Close";
     if (!trigger || !src) return;
 
-    const labelEl = trigger.querySelector(".media-embed-toggle-text");
-    const arrowEl = trigger.querySelector(".media-embed-toggle-arrow");
-    let iframe = null;
-    let active = false;
+    let modal = null;
 
-    const setLabel = (text, arrow) => {
-        if (labelEl) labelEl.textContent = text;
-        if (arrowEl) arrowEl.textContent = arrow;
+    const escHandler = (e) => {
+        if (e.key === "Escape") close();
+    };
+
+    const close = () => {
+        if (!modal) return;
+        document.removeEventListener("keydown", escHandler);
+        document.body.style.overflow = "";
+        modal.remove();
+        modal = null;
+        trigger.setAttribute("aria-pressed", "false");
+        try { trigger.focus({ preventScroll: true }); } catch (_) {}
     };
 
     const open = () => {
-        if (active) return;
-        active = true;
-        figure.dataset.embedActive = "true";
-        iframe = document.createElement("iframe");
+        if (modal) return;
+        modal = document.createElement("div");
+        modal.className = "media-embed-modal";
+        modal.setAttribute("role", "dialog");
+        modal.setAttribute("aria-modal", "true");
+        modal.setAttribute("aria-label", title);
+
+        const stage = document.createElement("div");
+        stage.className = "media-embed-modal-stage";
+
+        const iframe = document.createElement("iframe");
         iframe.className = "media-embed-frame";
         iframe.src = src;
         iframe.title = title;
@@ -256,29 +267,28 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         iframe.setAttribute("allow", "fullscreen; accelerometer; gyroscope");
         iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
-        figure.appendChild(iframe);
-        setLabel(closeLabel, "×");
-        trigger.setAttribute("aria-pressed", "true");
-    };
+        stage.appendChild(iframe);
 
-    const close = () => {
-        if (!active) return;
-        active = false;
-        figure.removeAttribute("data-embed-active");
-        if (iframe && iframe.parentNode) iframe.parentNode.removeChild(iframe);
-        iframe = null;
-        setLabel(openLabel, "→");
-        trigger.setAttribute("aria-pressed", "false");
+        const closeBtn = document.createElement("button");
+        closeBtn.type = "button";
+        closeBtn.className = "media-embed-modal-close";
+        closeBtn.setAttribute("aria-label", "Close 3D viewer");
+        closeBtn.textContent = "\u00d7";
+        closeBtn.addEventListener("click", close);
+
+        modal.appendChild(stage);
+        modal.appendChild(closeBtn);
+        modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
+
+        document.body.appendChild(modal);
+        document.body.style.overflow = "hidden";
+        document.addEventListener("keydown", escHandler);
+        trigger.setAttribute("aria-pressed", "true");
+        setTimeout(() => { try { closeBtn.focus({ preventScroll: true }); } catch (_) {} }, 30);
     };
 
     trigger.setAttribute("aria-pressed", "false");
-    trigger.addEventListener("click", () => {
-        if (active) {
-            close();
-        } else {
-            open();
-        }
-    });
+    trigger.addEventListener("click", open);
 });
 
 // Apply pending CMS edits from localStorage (instant, no build wait).
