@@ -56,11 +56,11 @@ The companion app provides curated sleep content: independent musicians, ASMR, a
 | Award | Year |
 |-------|------|
 | Red Dot Design Award | 2016 |
-| A' Design Award, Silver | 2016–2017 |
+| A' Design Award, Silver | 2017 |
 | China Good Design, Gold | 2015 |
 | Golden Pin Design Award | 2018 |
-| Plus X Award | — |
-| Good Design Award | — |
+| PLUS X Award | 2016 |
+| K-Design Award | 2019 |
 
 Featured in **WIRED**, **Amazon Launchpad**, **TSUTAYA Books**.
 
