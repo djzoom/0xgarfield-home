@@ -22,7 +22,8 @@
     "piloViewerUrl": "/pilo/",
     "piloLogoUrl": "/pilo/logo/pilo-logo.svg",
     "piloLogoWhiteUrl": "/pilo/logo/pilo-logo-white.svg",
-    "auroraOssUrl": "https://github.com/djzoom/AURORA-oss"
+    "auroraOssUrl": "https://github.com/djzoom/AURORA-oss",
+    "auroraL01Url": "https://github.com/djzoom/AURORA-oss/blob/main/notebooks/0_foundation/L01_motivation.ipynb"
   },
   "profiles": {
     "githubUrl": "https://github.com/djzoom",
