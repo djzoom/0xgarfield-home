@@ -21,7 +21,8 @@
     "talktalkUrl": "https://talktalk.0xgarfield.com/",
     "piloViewerUrl": "/pilo/",
     "piloLogoUrl": "/pilo/logo/pilo-logo.svg",
-    "piloLogoWhiteUrl": "/pilo/logo/pilo-logo-white.svg"
+    "piloLogoWhiteUrl": "/pilo/logo/pilo-logo-white.svg",
+    "auroraOssUrl": "https://github.com/djzoom/AURORA-oss"
   },
   "profiles": {
     "githubUrl": "https://github.com/djzoom",
