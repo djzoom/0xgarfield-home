@@ -227,7 +227,7 @@
         o = o || {}; var c = A.ctx, n = c.createOscillator(), v = c.createGain(); n.type = type; n.frequency.setValueAtTime(f, t);
         if (o.glide) n.frequency.exponentialRampToValueAtTime(o.glide, t + (o.gt || .1));
         v.gain.setValueAtTime(0, t); v.gain.linearRampToValueAtTime(g, t + (o.a || .005)); v.gain.exponentialRampToValueAtTime(.0001, t + dur);
-        n.connect(v); v.connect(dest || A.bus); n.start(t); n.stop(t + dur + .05); A.voices.add(n); n.onended = function () { A.voices.delete(n); };
+        n.connect(v); v.connect(dest || A.bus); n.start(t); n.stop(t + dur + .05); var set = A.voices; set.add(n); n.onended = function () { set.delete(n); };
         return n;
     }
     function hit(t, dur, g, hp, dest) {
@@ -335,8 +335,8 @@
         var t = A.ctx.currentTime, d = hard ? .15 : 1.3;
         A.voices.forEach(function (o) { try { if (o.detune) o.detune.setTargetAtTime(-1200, t, d / 3); if (o.playbackRate) o.playbackRate.setTargetAtTime(.3, t, d / 3); } catch (err) {} });
         A.tone.frequency.setTargetAtTime(400, t, d / 3); A.master.gain.setTargetAtTime(0, t + d * .4, d / 4);
-        var bus = A.bus, cr = crk;
-        setTimeout(function () { A.voices.forEach(function (o) { try { o.stop(); } catch (err) {} }); A.voices.clear(); try { cr.stop(); } catch (err) {} bus.disconnect(); }, d * 1000 + 200);
+        var bus = A.bus, cr = crk, old = A.voices; A.voices = new Set();
+        setTimeout(function () { old.forEach(function (o) { try { o.stop(); } catch (err) {} }); old.clear(); try { cr.stop(); } catch (err) {} bus.disconnect(); }, d * 1000 + 200);
     }
     function setKnob(on) {
         knob.setAttribute("aria-pressed", on); knob.setAttribute("aria-label", on ? UI.pause : UI.play);
