@@ -48,11 +48,11 @@
 .cr-rec:focus-visible .cr-sleeve { outline: 2px solid var(--accent); outline-offset: 4px; }
 .cr-sz { width: min(calc(100cqi / 1.66), 60vh, 440px); }
 .cr-stage { position: relative; aspect-ratio: 1; transition: transform .7s var(--cr-ease); }
-.cr-sleeve { position: absolute; inset: 0; z-index: 3; display: grid; grid-template-rows: 9fr 7fr; background: var(--bb); overflow: hidden; border-radius: 2px;
+.cr-sleeve { position: absolute; inset: 0; z-index: 3; display: block; background: var(--bb); overflow: hidden; border-radius: 2px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .08), 0 22px 44px -24px rgba(31, 42, 34, .6); transition: transform .7s var(--cr-ease); }
-.cr-sleeve > img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.cr-band { position: relative; background: var(--bb); }
-.cr-band img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cr-sleeve > img, .pl-sleeve > img { position: absolute; left: 0; top: 0; width: 100%; height: 56.25%; max-width: none; object-fit: cover; display: block; }
+.cr-band { position: absolute; left: 0; right: 0; bottom: 0; height: 43.75%; background: var(--bb); }
+.cr-band img { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; display: block; }
 .cr-talktalk .cr-band::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .22) 0 2px, transparent 2px 5px); }
 .cr-sleeve::before { content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2; opacity: .22; mix-blend-mode: soft-light;
     background: radial-gradient(circle at 50% 50%, transparent 0 45.5%, rgba(255, 255, 255, .35) 46%, transparent 46.8%), var(--cr-grain, none); background-size: 100% 100%, 180px 180px; }
@@ -124,8 +124,7 @@
 .pl-info { min-width: 0; }
 .pl-info > * { opacity: 0; transform: translateY(16px); }
 .pl.pl-shown .pl-info > * { opacity: 1; transform: none; transition: opacity .6s var(--cr-ease), transform .7s var(--cr-ease); transition-delay: calc(.25s + var(--k, 0) * 50ms); }
-.pl-sleeve { position: relative; width: min(200px, 42%); aspect-ratio: 1; border-radius: 2px; overflow: hidden; display: grid; grid-template-rows: 9fr 7fr; box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .6); margin-bottom: 28px; background: var(--bb); }
-.pl-sleeve > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pl-sleeve { position: relative; width: min(200px, 42%); aspect-ratio: 1; border-radius: 2px; overflow: hidden; display: block; box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .6); margin-bottom: 28px; background: var(--bb); }
 .cr-pilo .pl-sleeve { box-shadow: 0 0 0 1px rgba(0, 47, 108, .15), 0 18px 40px -22px rgba(0, 0, 0, .35); }
 .pl-no { font: 12px var(--font-mono); opacity: .7; margin: 0 0 10px; font-variant-numeric: tabular-nums; }
 .pl-info h3 { font-size: clamp(32px, 4vw, 52px); line-height: 1.05; letter-spacing: -.02em; font-weight: 600; margin: 0; color: var(--bf); }
@@ -181,3 +180,20 @@ html[lang^="zh"] .pl-body p { line-height: 1.8; }
 /* rotated layers inside the records must never widen the page */
 body { overflow-x: clip; }
 #work { overflow-x: clip; overflow-clip-margin: 0; }
+
+/* ----- On the record: the back of the sleeve, as a track listing ----- */
+.cr-back { max-width: 860px; border-top: 2px solid var(--ink); }
+.cr-back-head { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding: 10px 0 14px; font: 12px/1.4 var(--font-mono); letter-spacing: .06em; color: var(--muted); border-bottom: 1px solid var(--line); }
+.cr-tracks { list-style: none; margin: 0; padding: 0; }
+.cr-tracks li { display: grid; grid-template-columns: 3.2em minmax(0, 1fr); gap: 0 8px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.cr-tn { font: 13px/1.9 var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.cr-tt { min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+.cr-tl { display: flex; align-items: baseline; gap: 10px; }
+.cr-tl b { font-weight: 500; font-size: 1.12rem; line-height: 1.35; }
+.cr-tl i { flex: 1; min-width: 24px; border-bottom: 1px dotted color-mix(in srgb, var(--ink) 45%, transparent); transform: translateY(-.3em); }
+.cr-ty { font: 13px var(--font-mono); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cr-ty:empty { display: none; }
+.cr-tl:has(.cr-ty:empty) i { display: none; }
+.cr-tm { font: 13px/1.5 var(--font-mono); color: var(--muted); }
+.cr-tm a { color: var(--accent); }
+@media (max-width: 560px) { .cr-tl { flex-wrap: wrap; } .cr-tl i { display: none; } .cr-ty { order: -1; flex-basis: 100%; color: var(--muted); } .cr-tracks li { grid-template-columns: 2.6em minmax(0, 1fr); } }
