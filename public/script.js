@@ -22,7 +22,8 @@ const contactEmail = `${emailLocalPart}@${emailDomainPart}`;
 function scrollToSection(id) {
     const section = document.getElementById(id);
     if (!section) return;
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    const smooth = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    section.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
 }
 
 scrollTriggers.forEach((trigger) => {
@@ -259,6 +260,9 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         iframe.setAttribute("allow", "fullscreen; accelerometer; gyroscope");
         iframe.setAttribute("allowfullscreen", "");
         iframe.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+        iframe.addEventListener("load", () => {
+            try { iframe.contentDocument.addEventListener("keydown", escHandler); } catch (_) { /* cross-origin: ignore */ }
+        });
         stage.appendChild(iframe);
 
         const closeBtn = document.createElement("button");

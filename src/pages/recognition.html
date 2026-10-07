@@ -30,7 +30,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css?v={{assets.cssVersion}}">
 </head>
 
@@ -46,11 +46,11 @@
             </a>
             <div class="header-actions">
                 <nav class="primary-nav" aria-label="Primary">
-                    <a class="nav-link" href="{{site.homeEnPath}}#overview">Work</a>
+                    <a class="nav-link nav-link-jump" href="{{site.homeEnPath}}#work">Work</a>
                     <a class="nav-link nav-link-active" href="{{site.recognitionEnPath}}" aria-current="page">Recognition</a>
                     <a class="nav-link" href="{{site.writingEnPath}}">Writing</a>
                     <a class="nav-link" href="{{site.aboutEnPath}}">About</a>
-                    <a class="nav-link" href="{{site.homeEnPath}}#links">Contact</a>
+                    <a class="nav-link nav-link-jump" href="{{site.homeEnPath}}#contact">Contact</a>
                 </nav>
                 <a class="lang-switch" href="{{site.recognitionZhPath}}" hreflang="zh-Hans" aria-label="Switch to Chinese">中</a>
             </div>
@@ -146,8 +146,8 @@
                 <h2 data-editable="recognition.juries.heading">{{content.recognition.juries.heading}}</h2>
                 <ul class="record-list">
                     <li class="record-row">
-                        <span class="record-name">47th News &amp; Documentary Emmy® Awards — Judge, Documentary Categories (Sound)</span>
-                        <span class="record-meta">National Academy of Television Arts &amp; Sciences (NATAS) · 2026</span>
+                        <span class="record-name">Judge, 47th News &amp; Documentary Emmy® Awards — Documentary Categories (Sound)</span>
+                        <span class="record-meta">National Academy of Television Arts &amp; Sciences (NATAS), 2026</span>
                     </li>
                 </ul>
             </section>
@@ -172,12 +172,12 @@
                     <li class="record-row">
                         <span class="record-name">GeekPark</span>
                         <span class="record-meta">Feature coverage of PILO® &amp; Run Baby Run®</span>
-                        <a class="record-link" href="{{references.geekParkUrl}}" target="_blank" rel="noopener noreferrer">Read feature →</a>
+                        <a class="record-link" href="{{references.geekParkUrl}}" target="_blank" rel="noopener noreferrer">Read feature</a>
                     </li>
                     <li class="record-row">
                         <span class="record-name">Run Baby Run® launch (2014)</span>
                         <span class="record-meta">Long-form coverage and runner adoption</span>
-                        <a class="record-link" href="{{references.runBabyRunWeiboUrl}}" target="_blank" rel="noopener noreferrer">Original launch →</a>
+                        <a class="record-link" href="{{references.runBabyRunWeiboUrl}}" target="_blank" rel="noopener noreferrer">Original launch</a>
                     </li>
                 </ul>
                 <p class="record-note" data-editable="recognition.press.note">{{content.recognition.press.note}}</p>

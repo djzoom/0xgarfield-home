@@ -30,11 +30,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap">
+        href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
     <link rel="stylesheet" href="styles.css?v={{assets.cssVersion}}">
 </head>
-
-<body>
 
 <body>
     <header class="site-header" id="top">
@@ -48,11 +46,11 @@
             </a>
             <div class="header-actions">
                 <nav class="primary-nav" aria-label="主导航">
-                    <button type="button" class="nav-link" data-scroll="work">项目</button>
+                    <button type="button" class="nav-link nav-link-jump" data-scroll="work">项目</button>
                     <a class="nav-link" href="{{site.recognitionZhPath}}">荣誉</a>
                     <a class="nav-link" href="{{site.writingZhPath}}">文字</a>
                     <a class="nav-link" href="{{site.aboutZhPath}}">关于</a>
-                    <button type="button" class="nav-link" data-scroll="contact">联系</button>
+                    <button type="button" class="nav-link nav-link-jump" data-scroll="contact">联系</button>
                 </nav>
                 <a class="lang-switch" href="{{site.homeEnPath}}" hreflang="en" aria-label="Switch to English">EN</a>
             </div>
@@ -109,7 +107,7 @@
                 <article class="project">
                     <figure class="project-media">
                         <a href="{{projects.auroraOssUrl}}" target="_blank" rel="noopener noreferrer">
-                            <img src="images/cover-aurora.jpg" alt="用 AURORA 代码计算的梅尔频谱图" width="1600" height="900" loading="lazy">
+                            <img src="images/cover-aurora.jpg" alt="Aurora Quest，AURORA 课程的 8-bit 陪练游戏" width="1600" height="900" loading="lazy">
                         </a>
                     </figure>
                     <h3 data-editable="index.aurora.title">{{content.index.aurora.title}}</h3>
@@ -135,7 +133,8 @@
         <section class="section" id="practice" data-section>
             <div class="practice">
                 <h2 data-editable="index.practice.heading">{{content.index.practice.heading}}</h2>
-                <p data-editable="index.practice.body" style="margin-top:1rem">{{content.index.practice.body}}</p>
+                <p data-editable="index.practice.body" class="practice-body">{{content.index.practice.body}}</p>
+                <p data-editable="index.practice.body2">{{content.index.practice.body2}}</p>
                 <ul class="practice-axes">
                     <li><b data-editable="index.practice.axis1.label">{{content.index.practice.axis1.label}}</b><span data-editable="index.practice.axis1.copy">{{content.index.practice.axis1.copy}}</span></li>
                     <li><b data-editable="index.practice.axis2.label">{{content.index.practice.axis2.label}}</b><span data-editable="index.practice.axis2.copy">{{content.index.practice.axis2.copy}}</span></li>
@@ -157,8 +156,8 @@
                         <a class="record-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer">red-dot.org</a>
                     </li>
                     <li class="record-row">
-                        <span class="record-name">第 47 届美国新闻与纪录片艾美奖</span>
-                        <span class="record-meta">纪录片单元声音类评委，NATAS，2026</span>
+                        <span class="record-name">第 47 届美国新闻与纪录片艾美奖纪录片单元声音类评委</span>
+                        <span class="record-meta">NATAS，2026</span>
                         <span></span>
                     </li>
                     <li class="record-row">
@@ -181,7 +180,7 @@
                     <a class="record-disc-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer" aria-label="红点奖获奖信">
                         <span class="disc"><img src="images/archive-red-dot-letter.jpg" alt="" loading="lazy"></span>
                     </a>
-                    <p class="record-caption"><b>声音档案</b><span data-editable="index.records.discnote">{{content.index.records.discnote}}</span></p>
+                    <p class="record-caption"><b>获奖信</b><span data-editable="index.records.discnote">{{content.index.records.discnote}}</span></p>
                 </div>
             </div>
         </section>
@@ -189,7 +188,7 @@
         <section class="contact section-anchor" id="contact" data-section>
             <div>
                 <h2 data-editable="index.contact.heading">{{content.index.contact.heading}}</h2>
-                <p data-editable="index.contact.body" style="margin-top:0.75rem">{{content.index.contact.body}}</p>
+                <p data-editable="index.contact.body" class="contact-body">{{content.index.contact.body}}</p>
                 <div class="contact-buttons">
                     <a class="btn btn-primary" data-email-link data-email-context="links" data-email-mode="address">邮件</a>
                     <button type="button" class="btn btn-secondary" data-copy-email data-email-context="links" data-copy-label="复制地址" data-copied-label="已复制">复制地址</button>

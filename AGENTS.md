@@ -30,10 +30,15 @@ into `dist/`, deployed to Cloudflare by GitHub Actions on every push to `main`.
 - Broadcasting: China Radio International Hit FM (2006–2012); Phoenix U Radio,
   Hong Kong (2013–2014); Highlights Music Station (2020–2022).
 - Products: PILO® (2015–), Run Baby Run® (2013–), Talktalk (2026–), AURORA (99 lessons, fully open source, MIT — never "open core" or "Lesson 1 free").
-- Talktalk testimonial is from a Phoenix TV (Hong Kong) news anchor / 香港凤凰卫视新闻主播.
+- Talktalk testimonial is from a Phoenix TV (Hong Kong) news anchor / 香港凤凰卫视新闻主播. Quote it verbatim: “It feels great — smooth and intuitive, never working against you. It keeps your attention entirely on what you're saying.”
+- Talktalk was designed and built solo by Garfield (owner-stated). AURORA: Garfield designed and directed the curriculum; implementation was AI-assisted pair programming; repository dates from 2026.
+- Aurora Quest is the course's own 8-bit companion game (in the AURORA repo, aurora-quest/); screenshots of it are real product images.
 - China Good Design: Gold, 2015 (PILO in the China Good Design Yearbook 2015/2016).
 - Wording: "sleep and relaxation audio" / 睡眠与放松音频 — never "sleep aid"/助眠.
 - Do not mention: Vensa, Mensa, visa/immigration status, current city.
+
+## Signal colour (--signal), the only allowed uses
+Cursor notes; active-nav underline; axis dots; disc centre; primary-button and close-button hover rings; the brand mark's centre dot (the mark is a miniature disc). Never text, never fills.
 
 ## Voice
 Calm, specific, no exclamation marks, no marketing superlatives. Short sentences.
