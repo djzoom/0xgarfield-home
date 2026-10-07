@@ -34,7 +34,7 @@ scrollTriggers.forEach((trigger) => {
 
 function setActiveNav(id) {
     navLinks.forEach((link) => {
-        link.classList.toggle("active", link.dataset.scroll === id);
+        link.classList.toggle("is-active", link.dataset.scroll === id);
     });
 }
 
@@ -64,67 +64,44 @@ function updateScrollState() {
 window.addEventListener("scroll", updateScrollState, { passive: true });
 updateScrollState();
 
-// Reveal-on-scroll for [data-reveal] sections.
-const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
-revealItems.forEach((item, index) => {
-    item.style.setProperty("--reveal-delay", `${(index % 6) * 60}ms`);
-});
+// Content is visible by default; the only entrance motion is the hero settle in CSS.
 
-if ("IntersectionObserver" in window) {
-    const revealObserver = new IntersectionObserver(
-        (entries, observer) => {
-            entries.forEach((entry) => {
-                if (!entry.isIntersecting) return;
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-            });
-        },
-        {
-            threshold: 0.14,
-            rootMargin: "0px 0px -8% 0px"
-        }
-    );
-
-    revealItems.forEach((item) => revealObserver.observe(item));
-} else {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
-}
-
-// Subtle ambient music notes following the cursor on hover-capable devices.
-// Toned down to "occasional" rather than "trail"; respects reduced-motion via CSS.
+// Cursor notes: a quiet echo around the pointer on hover-capable devices.
+// At most two on screen, none while a modal is open or the pointer is on a control.
 const hoverCapable = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-if (hoverCapable) {
+if (hoverCapable && !reducedMotion) {
     const noteLayer = document.createElement("div");
-    const noteSymbols = ["♪", "♫", "♩", "♬"];
+    const noteSymbols = ["\u266a", "\u266b", "\u2669"];
     let lastNoteAt = 0;
 
     noteLayer.className = "cursor-note-layer";
     noteLayer.setAttribute("aria-hidden", "true");
     document.body.appendChild(noteLayer);
 
-    const spawnNote = (x, y) => {
-        if (document.hidden) return;
-        const note = document.createElement("span");
-        const driftX = (Math.random() * 2 - 1) * 18;
-        const driftY = -28 - Math.random() * 14;
+    const onControl = (el) => !!(el && el.closest && el.closest("a, button, input, textarea, select, [role='dialog']"));
 
+    const spawnNote = (x, y) => {
+        if (document.hidden || document.body.classList.contains("has-modal")) return;
+        if (noteLayer.childElementCount >= 2) return;
+        const note = document.createElement("span");
         note.className = "cursor-note";
         note.textContent = noteSymbols[Math.floor(Math.random() * noteSymbols.length)];
-        note.style.left = `${x + (Math.random() * 2 - 1) * 14}px`;
-        note.style.top = `${y - 6 - Math.random() * 12}px`;
-        note.style.setProperty("--note-dx", `${driftX.toFixed(2)}px`);
-        note.style.setProperty("--note-dy", `${driftY.toFixed(2)}px`);
-        note.style.setProperty("--note-rotate", `${((Math.random() * 2 - 1) * 14).toFixed(2)}deg`);
-        note.style.setProperty("--note-duration", `${(1500 + Math.random() * 350).toFixed(0)}ms`);
-        note.style.setProperty("--note-scale", `${(0.85 + Math.random() * 0.25).toFixed(2)}`);
+        note.style.left = `${x + (Math.random() * 2 - 1) * 10}px`;
+        note.style.top = `${y - 8}px`;
+        note.style.setProperty("--note-dx", `${((Math.random() * 2 - 1) * 10).toFixed(1)}px`);
+        note.style.setProperty("--note-dy", `${(-16 - Math.random() * 12).toFixed(1)}px`);
+        note.style.setProperty("--note-duration", `${(1000 + Math.random() * 400).toFixed(0)}ms`);
+        note.style.setProperty("--note-scale", `${(0.9 + Math.random() * 0.2).toFixed(2)}`);
         noteLayer.appendChild(note);
-        window.setTimeout(() => note.remove(), 2200);
+        window.setTimeout(() => note.remove(), 1500);
     };
 
     document.addEventListener("pointermove", (event) => {
         const now = performance.now();
-        if (now - lastNoteAt < 540 || Math.random() > 0.18) return;
+        if (now - lastNoteAt < 900 || Math.random() > 0.12) return;
+        if (onControl(event.target)) return;
         lastNoteAt = now;
         spawnNote(event.clientX, event.clientY);
     }, { passive: true });
@@ -254,6 +231,7 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         if (!modal) return;
         document.removeEventListener("keydown", escHandler);
         document.body.style.overflow = "";
+        document.body.classList.remove("has-modal");
         inerted.forEach((el) => el.removeAttribute("inert"));
         inerted = [];
         modal.remove();
@@ -297,6 +275,7 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         inerted = Array.from(document.body.children).filter((el) => el !== modal && el.tagName !== "SCRIPT");
         inerted.forEach((el) => el.setAttribute("inert", ""));
         document.body.appendChild(modal);
+        document.body.classList.add("has-modal");
         document.body.style.overflow = "hidden";
         document.addEventListener("keydown", escHandler);
         trigger.setAttribute("aria-pressed", "true");

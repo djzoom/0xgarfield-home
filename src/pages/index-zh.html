@@ -35,6 +35,8 @@
 </head>
 
 <body>
+
+<body>
     <header class="site-header" id="top">
         <div class="header-inner">
             <a class="brand" href="#top" aria-label="返回顶部">
@@ -46,11 +48,11 @@
             </a>
             <div class="header-actions">
                 <nav class="primary-nav" aria-label="主导航">
-                    <button type="button" class="nav-link" data-scroll="overview">项目</button>
+                    <button type="button" class="nav-link" data-scroll="work">项目</button>
                     <a class="nav-link" href="{{site.recognitionZhPath}}">荣誉</a>
                     <a class="nav-link" href="{{site.writingZhPath}}">文字</a>
                     <a class="nav-link" href="{{site.aboutZhPath}}">关于</a>
-                    <button type="button" class="nav-link" data-scroll="links">联系</button>
+                    <button type="button" class="nav-link" data-scroll="contact">联系</button>
                 </nav>
                 <a class="lang-switch" href="{{site.homeEnPath}}" hreflang="en" aria-label="Switch to English">EN</a>
             </div>
@@ -58,328 +60,147 @@
     </header>
 
     <main class="page">
-        <section class="hero section-anchor">
-            <div class="hero-copy" data-reveal>
+        <section class="hero section-anchor" aria-label="介绍">
+            <div class="hero-copy">
+                <p class="hero-identity" data-editable="index.hero.identity">{{content.index.hero.identity}}</p>
                 <h1 data-editable="index.hero.heading">{{content.index.hero.heading}}</h1>
                 <p class="hero-lede" data-editable="index.hero.lede">{{content.index.hero.lede}}</p>
                 <div class="hero-actions">
-                    <button type="button" class="btn btn-primary" data-scroll="overview">项目</button>
-                    <a class="btn btn-secondary" data-email-link data-email-context="hero" data-email-mode="cta">联系</a>
+                    <button type="button" class="btn btn-primary" data-scroll="work">看作品</button>
+                    <a class="btn btn-secondary" data-email-link data-email-context="hero" data-email-mode="cta">发邮件</a>
                 </div>
             </div>
+            <figure class="hero-portrait">
+                <img src="images/hero-2026-primary.jpeg" alt="加菲众肖像" width="800" height="1000">
+                <figcaption data-editable="index.hero.caption">{{content.index.hero.caption}}</figcaption>
+            </figure>
         </section>
 
-        <section class="credibility-strip" aria-label="奖项、合作与机构">
-            <p class="eyebrow" data-editable="index.credibility.eyebrow">{{content.index.credibility.eyebrow}}</p>
-            <ul class="credibility-list">
-                <li>Red Dot</li>
-                <li>A' Design</li>
-                <li>金点</li>
-                <li>Plus X</li>
-                <li>K-Design</li>
-                <li>Brookstone</li>
-                <li>Nike</li>
-                <li>中国国际广播电台</li>
-                <li>凤凰 U Radio</li>
-            </ul>
-            <p class="credibility-foot"><a href="{{site.recognitionZhPath}}" data-editable="index.credibility.foot">{{content.index.credibility.foot}}</a></p>
-        </section>
-
-        <section class="now-section" id="now" data-section>
-            <div class="now-inner" data-reveal>
-                <p class="eyebrow" data-editable="index.now.eyebrow">{{content.index.now.eyebrow}}</p>
-                <h2 data-editable="index.now.heading">{{content.index.now.heading}}</h2>
-                <p data-editable="index.now.body">{{content.index.now.body}}</p>
-                <ul class="now-axes">
-                    <li><span class="axis-label" data-editable="index.now.axis1.label">{{content.index.now.axis1.label}}</span><span class="axis-copy" data-editable="index.now.axis1.copy">{{content.index.now.axis1.copy}}</span></li>
-                    <li><span class="axis-label" data-editable="index.now.axis2.label">{{content.index.now.axis2.label}}</span><span class="axis-copy" data-editable="index.now.axis2.copy">{{content.index.now.axis2.copy}}</span></li>
-                    <li><span class="axis-label" data-editable="index.now.axis3.label">{{content.index.now.axis3.label}}</span><span class="axis-copy" data-editable="index.now.axis3.copy">{{content.index.now.axis3.copy}}</span></li>
-                </ul>
-                <p class="now-links">
-                    <a href="{{site.aboutZhPath}}">关于 →</a>
-                    <a href="{{site.writingZhPath}}">文字 →</a>
-                </p>
+        <section class="section section-anchor" id="work" data-section>
+            <div class="section-head">
+                <h2 data-editable="index.work.heading">{{content.index.work.heading}}</h2>
+                <p data-editable="index.work.note">{{content.index.work.note}}</p>
             </div>
-        </section>
-
-        <section class="record-shelf" aria-label="奖项、媒体与合作唱片墙">
-            <div class="record-shelf-head" data-reveal>
-                <p class="eyebrow">唱片墙</p>
-                <a class="record-shelf-link" href="{{site.recognitionZhPath}}">全部荣誉 →</a>
-            </div>
-            <div class="record-strip" data-reveal>
-                <figure class="record-disc is-top">
-                    <a class="record-disc-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer" aria-label="Red Dot Award —— 查看项目页">
-                        <span class="disc"><img src="images/archive-red-dot-letter.jpg" alt="PILO® 获 Red Dot Award 2016 获奖信" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>Red Dot Award</b><span>德国 · 2016</span></figcaption>
-                </figure>
-                <figure class="record-disc is-top">
-                    <a class="record-disc-link" href="{{references.aDesignUrl}}" target="_blank" rel="noopener noreferrer" aria-label="A' Design Award —— 查看获奖页">
-                        <span class="disc"><img src="images/archive-a-design.jpg" alt="PILO® 获 A' Design Award 银奖证书" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>A' Design Award</b><span>意大利 · 银奖 2017</span></figcaption>
-                </figure>
-                <figure class="record-disc is-top">
-                    <a class="record-disc-link" href="images/archive-golden-pin.jpg" target="_blank" rel="noopener noreferrer" aria-label="金点设计奖证书 —— 打开完整图">
-                        <span class="disc"><img src="images/archive-golden-pin.jpg" alt="PILO® 获 2018 金点设计奖证书" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>金点设计奖</b><span>台湾 · 2018</span></figcaption>
-                </figure>
-                <figure class="record-disc is-top">
-                    <a class="record-disc-link" href="images/archive-plus-x.jpg" target="_blank" rel="noopener noreferrer" aria-label="Plus X Award 证书 —— 打开完整图">
-                        <span class="disc"><img src="images/archive-plus-x.jpg" alt="PILO® 获 Plus X Award 证书" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>Plus X Award</b><span>德国 · 创新</span></figcaption>
-                </figure>
-                <figure class="record-disc is-top">
-                    <a class="record-disc-link" href="images/archive-k-design.jpg" target="_blank" rel="noopener noreferrer" aria-label="K-Design Award 证书 —— 打开完整图">
-                        <span class="disc"><img src="images/archive-k-design.jpg" alt="PILO® 获 2019 K-Design Award 证书" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>K-Design Award</b><span>韩国 · 2019</span></figcaption>
-                </figure>
-                <figure class="record-disc">
-                    <a class="record-disc-link" href="images/archive-wired-germany.jpg" target="_blank" rel="noopener noreferrer" aria-label="WIRED 德国版 PILO® 报道 —— 打开完整图">
-                        <span class="disc"><img src="images/archive-wired-germany.jpg" alt="WIRED 德国版杂志 PILO® 报道" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>WIRED 德国版</b><span>PILO® 报道</span></figcaption>
-                </figure>
-                <figure class="record-disc is-left">
-                    <a class="record-disc-link" href="images/archive-mens-health.jpg" target="_blank" rel="noopener noreferrer" aria-label="Men's Health Run Baby Run 专题 —— 打开完整图">
-                        <span class="disc"><img src="images/archive-mens-health.jpg" alt="Men's Health 杂志 Run Baby Run 专题" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>Men's Health</b><span>Run Baby Run® 专题</span></figcaption>
-                </figure>
-                <figure class="record-disc is-nike">
-                    <a class="record-disc-link" href="{{references.nikeMediaUrl}}" target="_blank" rel="noopener noreferrer" aria-label="耐克上海马拉松 —— Nike 媒体页">
-                        <span class="disc"><img src="images/archive-nike-run-baby-run.png" alt="耐克上海马拉松 Run Baby Run 合作页面" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>耐克上海马拉松</b><span>Run Baby Run® 配乐</span></figcaption>
-                </figure>
-                <figure class="record-disc">
-                    <a class="record-disc-link" href="images/archive-brookstone-retail.jpg" target="_blank" rel="noopener noreferrer" aria-label="PILO® 在 Brookstone 线下展示 —— 打开完整图">
-                        <span class="disc"><img src="images/pilo-phone.jpg" alt="PILO® 音乐驱动睡眠枕与手机 App" loading="lazy"></span>
-                    </a>
-                    <figcaption class="record-caption"><b>Brookstone</b><span>PILO® 线下渠道 · 中国</span></figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <section class="overview section-anchor" id="overview" data-section>
-            <div class="section-heading" data-reveal>
-                <p class="eyebrow" data-editable="index.overview.eyebrow">{{content.index.overview.eyebrow}}</p>
-                <h2 data-editable="index.overview.heading">{{content.index.overview.heading}}</h2>
-            </div>
-
-            <div class="project-grid">
-                <article class="project-card" data-reveal>
-                    <figure class="project-media" data-embed-figure
-                        data-embed-src="{{projects.piloViewerUrl}}"
-                        data-embed-title="PILO® 交互式 3D 模型"
-                        data-embed-open-label="试试 3D 模型"
-                        data-embed-close-label="收起 3D">
-                        <img src="images/pilo-phone.jpg" alt="PILO® 音乐驱动睡眠枕与手机 App" loading="lazy">
-                        <button type="button" class="media-embed-toggle" data-embed-trigger
-                            aria-label="打开 PILO® 交互式 3D 模型">
-                            <span class="media-embed-toggle-text">试试 3D 模型</span>
-                            <span class="media-embed-toggle-arrow" aria-hidden="true">→</span>
+            <div class="projects">
+                <article class="project" data-embed-figure data-embed-src="{{projects.piloViewerUrl}}" data-embed-title="PILO 互动 3D 查看器">
+                    <figure class="project-media">
+                        <button type="button" data-embed-trigger aria-label="打开 PILO 3D 查看器">
+                            <img src="images/cover-pilo.jpg" alt="PILO 音乐睡眠枕，连接手机" width="1600" height="900" loading="lazy">
                         </button>
                     </figure>
-                    <p class="proof-tag">PILO®</p>
                     <h3 data-editable="index.pilo.title">{{content.index.pilo.title}}</h3>
-                    <p data-editable="index.pilo.desc">{{content.index.pilo.desc}}</p>
-                    <div class="project-evidence" aria-label="PILO® 公开证据">
-                        <div class="evidence-group">
-                            <span class="project-note-label">奖项</span>
-                            <div class="tag-list">
-                                <a href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer">Red Dot</a>
-                                <a href="{{references.aDesignUrl}}" target="_blank"
-                                    rel="noopener noreferrer">A' Design</a>
-                                <span>金点</span>
-                                <span>Plus X</span>
-                                <span>K-Design</span>
-                            </div>
-                        </div>
-                        <div class="evidence-group">
-                            <span class="project-note-label">渠道</span>
-                            <div class="tag-list">
-                                <span>Brookstone 中国</span>
-                                <span>京东</span>
-                                <span>Amazon US</span>
-                                <span>Amazon Japan</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="source-list" aria-label="PILO® 外部链接">
-                        <a class="source-link" href="{{references.redDotUrl}}" target="_blank"
-                            rel="noopener noreferrer">Red Dot 项目页</a>
-                        <a class="source-link" href="{{references.aDesignUrl}}"
-                            target="_blank" rel="noopener noreferrer">A' Design 获奖页</a>
-                        <a class="source-link" href="{{references.geekParkUrl}}" target="_blank"
-                            rel="noopener noreferrer">GeekPark 专访</a>
-                    </div>
+                    <p class="project-line" data-editable="index.pilo.desc">{{content.index.pilo.desc}}</p>
+                    <p class="project-role" data-editable="index.pilo.role">{{content.index.pilo.role}}</p>
+                    <a class="project-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer">红点奖项目页</a>
                 </article>
 
-                <article class="project-card" data-reveal>
+                <article class="project">
                     <figure class="project-media">
-                        <img src="images/archive-nike-run-baby-run.png" alt="Run Baby Run 与耐克合作页面" loading="lazy">
-                    </figure>
-                    <p class="proof-tag">Run Baby Run®</p>
-                    <h3 data-editable="index.rbr.title">{{content.index.rbr.title}}</h3>
-                    <p data-editable="index.rbr.desc">{{content.index.rbr.desc}}</p>
-                    <div class="project-evidence" aria-label="Run Baby Run 公开证据">
-                        <div class="evidence-group">
-                            <span class="project-note-label">合作</span>
-                            <div class="tag-list">
-                                <a href="{{references.nikeMediaUrl}}" target="_blank"
-                                    rel="noopener noreferrer">耐克</a>
-                            </div>
-                        </div>
-                        <div class="evidence-group">
-                            <span class="project-note-label">场景</span>
-                            <div class="tag-list">
-                                <a href="{{references.nikeRunnerUrl}}" target="_blank"
-                                    rel="noopener noreferrer">上海马拉松</a>
-                                <span>官方专属配乐</span>
-                                <span>训练手册</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="source-list" aria-label="Run Baby Run 外部链接">
-                        <a class="source-link" href="{{references.nikeMediaUrl}}" target="_blank"
-                            rel="noopener noreferrer">Nike 媒体页</a>
-                        <a class="source-link" href="{{references.nikeRunnerUrl}}" target="_blank"
-                            rel="noopener noreferrer">上马加油包</a>
-                        <a class="source-link" href="{{references.geekParkUrl}}" target="_blank"
-                            rel="noopener noreferrer">GeekPark 报道</a>
-                        <a class="source-link" href="{{references.runBabyRunWeiboUrl}}" target="_blank"
-                            rel="noopener noreferrer">2014 年微博首发</a>
-                    </div>
-                    <div class="project-link-row">
-                        <a class="project-link" href="{{references.runBabyRunYoutubeUrl}}" target="_blank"
-                            rel="noopener noreferrer">在 YouTube 收听</a>
-                    </div>
-                </article>
-
-                <article class="project-card" data-reveal>
-                    <figure class="project-media">
-                        <a class="project-media-link" href="https://talktalk.0xgarfield.com/" target="_blank" rel="noopener noreferrer" aria-label="打开 Talktalk 官网">
-                            <img src="images/talktalk-shot-zh-20260701.jpg" alt="Talktalk 产品官网截图" loading="lazy">
+                        <a href="{{projects.talktalkUrl}}" target="_blank" rel="noopener noreferrer">
+                            <img src="images/cover-talktalk-zh.jpg" alt="Talktalk macOS 提词器" width="1600" height="900" loading="lazy">
                         </a>
                     </figure>
-                    <p class="proof-tag" data-editable="index.talktalk.tag">{{content.index.talktalk.tag}}</p>
                     <h3 data-editable="index.talktalk.title">{{content.index.talktalk.title}}</h3>
-                    <p data-editable="index.talktalk.desc">{{content.index.talktalk.desc}}</p>
-                    <div class="project-evidence" aria-label="Talktalk 与相关方向">
-                        <div class="evidence-group">
-                            <span class="project-note-label">系统</span>
-                            <div class="tag-list">
-                                <span>Talktalk</span>
-                                <span>实时提词</span>
-                                <span>自适应音频</span>
-                            </div>
-                        </div>
-                        <div class="evidence-group">
-                            <span class="project-note-label">赛道三轴</span>
-                            <div class="tag-list">
-                                <span>表达</span>
-                                <span>专注</span>
-                                <span>表现</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-link-row">
-                        <a class="project-link" href="{{projects.talktalkUrl}}" target="_blank"
-                            rel="noopener noreferrer">打开 Talktalk</a>
-                        <a class="project-link" href="{{site.writingZhPath}}">写作</a>
-                    </div>
+                    <p class="project-line" data-editable="index.talktalk.desc">{{content.index.talktalk.desc}}</p>
+                    <p class="project-role" data-editable="index.talktalk.role">{{content.index.talktalk.role}}</p>
+                    <a class="project-link" href="{{projects.talktalkUrl}}" target="_blank" rel="noopener noreferrer">talktalk.0xgarfield.com</a>
                 </article>
 
-                <article class="project-card project-card-text" data-reveal>
-                    <div class="project-media project-media-ambient" aria-hidden="true">
-                        <div class="ambient-stack">
-                            <span>AURORA</span>
-                            <span>正弦波</span>
-                            <span>FFT · MFCC</span>
-                            <span>注意力 · CTC</span>
-                            <span>Whisper</span>
-                        </div>
-                    </div>
-                    <p class="proof-tag" data-editable="index.aurora.tag">{{content.index.aurora.tag}}</p>
+                <article class="project">
+                    <figure class="project-media">
+                        <a href="{{projects.auroraOssUrl}}" target="_blank" rel="noopener noreferrer">
+                            <img src="images/cover-aurora.jpg" alt="用 AURORA 代码计算的梅尔频谱图" width="1600" height="900" loading="lazy">
+                        </a>
+                    </figure>
                     <h3 data-editable="index.aurora.title">{{content.index.aurora.title}}</h3>
-                    <p data-editable="index.aurora.desc">{{content.index.aurora.desc}}</p>
-                    <div class="project-evidence" aria-label="AURORA 课程">
-                        <div class="evidence-group">
-                            <span class="project-note-label">从零手写</span>
-                            <div class="tag-list">
-                                <span>FFT</span>
-                                <span>MFCC</span>
-                                <span>注意力</span>
-                                <span>CTC</span>
-                                <span>RAG</span>
-                            </div>
-                        </div>
-                        <div class="evidence-group">
-                            <span class="project-note-label">开源</span>
-                            <div class="tag-list">
-                                <span>MIT 许可</span>
-                                <span>99 节课</span>
-                                <span>纯 NumPy</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-link-row">
-                        <a class="project-link" href="{{projects.auroraL01Url}}" target="_blank"
-                            rel="noopener noreferrer">从第 1 课开始</a>
-                        <a class="project-link" href="{{projects.auroraOssUrl}}" target="_blank"
-                            rel="noopener noreferrer">在 GitHub 上查看</a>
-                    </div>
+                    <p class="project-line" data-editable="index.aurora.desc">{{content.index.aurora.desc}}</p>
+                    <p class="project-role" data-editable="index.aurora.role">{{content.index.aurora.role}}</p>
+                    <a class="project-link" href="{{projects.auroraL01Url}}" target="_blank" rel="noopener noreferrer">从第 1 课开始</a>
+                </article>
+
+                <article class="project">
+                    <figure class="project-media">
+                        <a href="{{references.runBabyRunYoutubeUrl}}" target="_blank" rel="noopener noreferrer">
+                            <img src="images/cover-run-baby-run.jpg" alt="Run Baby Run 封面" width="1600" height="900" loading="lazy">
+                        </a>
+                    </figure>
+                    <h3 data-editable="index.rbr.title">{{content.index.rbr.title}}</h3>
+                    <p class="project-line" data-editable="index.rbr.desc">{{content.index.rbr.desc}}</p>
+                    <p class="project-role" data-editable="index.rbr.role">{{content.index.rbr.role}}</p>
+                    <a class="project-link" href="{{references.runBabyRunYoutubeUrl}}" target="_blank" rel="noopener noreferrer">在 YouTube 听</a>
                 </article>
             </div>
         </section>
 
-        <section class="links section-anchor" id="links" data-section>
-            <div class="contact-card" data-reveal>
-                <div>
-                    <p class="eyebrow" data-editable="index.contact.eyebrow">{{content.index.contact.eyebrow}}</p>
-                    <h2 data-editable="index.contact.heading">{{content.index.contact.heading}}</h2>
-                </div>
+        <section class="section" id="practice" data-section>
+            <div class="practice">
+                <h2 data-editable="index.practice.heading">{{content.index.practice.heading}}</h2>
+                <p data-editable="index.practice.body" style="margin-top:1rem">{{content.index.practice.body}}</p>
+                <ul class="practice-axes">
+                    <li><b data-editable="index.practice.axis1.label">{{content.index.practice.axis1.label}}</b><span data-editable="index.practice.axis1.copy">{{content.index.practice.axis1.copy}}</span></li>
+                    <li><b data-editable="index.practice.axis2.label">{{content.index.practice.axis2.label}}</b><span data-editable="index.practice.axis2.copy">{{content.index.practice.axis2.copy}}</span></li>
+                    <li><b data-editable="index.practice.axis3.label">{{content.index.practice.axis3.label}}</b><span data-editable="index.practice.axis3.copy">{{content.index.practice.axis3.copy}}</span></li>
+                </ul>
+            </div>
+        </section>
 
-                <div class="contact-columns">
-                    <p data-editable="index.contact.body">{{content.index.contact.body}}</p>
-                    <div class="contact-actions">
-                        <div class="contact-buttons">
-                            <a class="btn btn-primary" data-email-link data-email-context="links" data-email-mode="address">邮箱</a>
-                            <button type="button" class="btn btn-secondary" data-copy-email data-email-context="links"
-                                data-copy-label="复制邮箱" data-copied-label="已复制邮箱">复制邮箱</button>
-                        </div>
-                        <div class="contact-links">
-                            <a class="github" href="{{profiles.githubUrl}}" target="_blank" rel="noopener noreferrer">
-                                <span class="contact-link-icon" aria-hidden="true">GH</span>
-                                <span class="contact-link-copy"><strong>GitHub</strong><span>@djzoom</span></span>
-                            </a>
-                            <a class="x" href="{{profiles.xUrl}}" target="_blank" rel="noopener noreferrer">
-                                <span class="contact-link-icon" aria-hidden="true">X</span>
-                                <span class="contact-link-copy"><strong>X / Twitter</strong><span>@djwz</span></span>
-                            </a>
-                            <a class="xiaohongshu" href="{{profiles.xiaohongshuUrl}}"
-                                target="_blank" rel="noopener noreferrer">
-                                <span class="contact-link-icon" aria-hidden="true">红</span>
-                                <span class="contact-link-copy"><strong>小红书</strong><span>加菲众</span></span>
-                            </a>
-                            <a class="weibo" href="{{profiles.weiboUrl}}" target="_blank" rel="noopener noreferrer">
-                                <span class="contact-link-icon" aria-hidden="true">微</span>
-                                <span class="contact-link-copy"><strong>微博</strong><span>加菲众</span></span>
-                            </a>
-                            <a class="baike" href="{{profiles.baikeUrl}}"
-                                target="_blank" rel="noopener noreferrer">
-                                <span class="contact-link-icon" aria-hidden="true">百</span>
-                                <span class="contact-link-copy"><strong>百度百科</strong><span>加菲众</span></span>
-                            </a>
-                        </div>
-                    </div>
+        <section class="section" id="records" data-section>
+            <div class="section-head">
+                <h2 data-editable="index.records.heading">{{content.index.records.heading}}</h2>
+                <a href="{{site.recognitionZhPath}}">全部记录</a>
+            </div>
+            <div class="records-intro">
+                <ul class="record-list">
+                    <li class="record-row">
+                        <span class="record-name">Red Dot Award: Product Design</span>
+                        <span class="record-meta">PILO，德国，2016</span>
+                        <a class="record-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer">red-dot.org</a>
+                    </li>
+                    <li class="record-row">
+                        <span class="record-name">第 47 届美国新闻与纪录片艾美奖</span>
+                        <span class="record-meta">纪录片单元声音类评委，NATAS，2026</span>
+                        <span></span>
+                    </li>
+                    <li class="record-row">
+                        <span class="record-name">耐克上海马拉松</span>
+                        <span class="record-meta">Run Baby Run® 官方配乐</span>
+                        <a class="record-link" href="{{references.nikeMediaUrl}}" target="_blank" rel="noopener noreferrer">nikeinc.com.cn</a>
+                    </li>
+                    <li class="record-row">
+                        <span class="record-name">WIRED Germany</span>
+                        <span class="record-meta">PILO 专题报道</span>
+                        <a class="record-link" href="images/archive-wired-germany.jpg" target="_blank" rel="noopener noreferrer">剪报</a>
+                    </li>
+                    <li class="record-row">
+                        <span class="record-name">中国国际广播电台 Hit FM</span>
+                        <span class="record-meta">主持人，2006–2012</span>
+                        <span></span>
+                    </li>
+                </ul>
+                <div class="disc-wrap">
+                    <a class="record-disc-link" href="{{references.redDotUrl}}" target="_blank" rel="noopener noreferrer" aria-label="红点奖获奖信">
+                        <span class="disc"><img src="images/archive-red-dot-letter.jpg" alt="" loading="lazy"></span>
+                    </a>
+                    <p class="record-caption"><b>声音档案</b><span data-editable="index.records.discnote">{{content.index.records.discnote}}</span></p>
                 </div>
             </div>
+        </section>
+
+        <section class="contact section-anchor" id="contact" data-section>
+            <div>
+                <h2 data-editable="index.contact.heading">{{content.index.contact.heading}}</h2>
+                <p data-editable="index.contact.body" style="margin-top:0.75rem">{{content.index.contact.body}}</p>
+                <div class="contact-buttons">
+                    <a class="btn btn-primary" data-email-link data-email-context="links" data-email-mode="address">邮件</a>
+                    <button type="button" class="btn btn-secondary" data-copy-email data-email-context="links" data-copy-label="复制地址" data-copied-label="已复制">复制地址</button>
+                </div>
+            </div>
+            <ul class="contact-links">
+                <li><a href="{{profiles.githubUrl}}" target="_blank" rel="noopener noreferrer">GitHub <span>djzoom</span></a></li>
+                <li><a href="{{profiles.xUrl}}" target="_blank" rel="noopener noreferrer">X <span>@djwz</span></a></li>
+                <li><a href="{{profiles.weiboUrl}}" target="_blank" rel="noopener noreferrer">微博 <span>加菲众</span></a></li>
+                <li><a href="{{profiles.xiaohongshuUrl}}" target="_blank" rel="noopener noreferrer">小红书 <span>加菲众</span></a></li>
+            </ul>
         </section>
     </main>
 
