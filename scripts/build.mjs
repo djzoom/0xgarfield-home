@@ -49,6 +49,15 @@ function renderTemplate(template, variables, filename) {
   });
 }
 
+// Alias routes live one directory down (/about/index.html), so page-relative
+// URLs like styles.css or images/x.jpg must become root-absolute.
+function absolutizeUrls(html) {
+  return html.replace(
+    /\b(href|src|data-embed-src)="(?![a-z][a-z0-9+.-]*:|\/\/|\/|#|\{\{)/gi,
+    (m, attr) => `${attr}="/`
+  );
+}
+
 async function writeAliasIfNeeded(filename, rendered) {
   const aliases = [];
   const alias = routeAliases.get(filename);
@@ -101,7 +110,7 @@ export async function buildSite() {
     const sourcePath = path.join(srcPagesDir, filename);
     const outputPath = path.join(distDir, filename);
     const template = await readFile(sourcePath, "utf8");
-    const rendered = renderTemplate(template, variables, filename);
+    const rendered = absolutizeUrls(renderTemplate(template, variables, filename));
     await writeFile(outputPath, rendered, "utf8");
     await writeAliasIfNeeded(filename, rendered);
   }

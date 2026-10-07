@@ -1193,6 +1193,20 @@ button:focus-visible {
     object-fit: cover;
     object-position: center;
     display: block;
+    opacity: 1;
+}
+
+/* Only discs with a dedicated crop rule below hide the <img>; anything new shows as-is. */
+.disc:has(img[src*="red-dot"]) img,
+.disc:has(img[src*="a-design"]) img,
+.disc:has(img[src*="golden-pin"]) img,
+.disc:has(img[src*="plus-x"]) img,
+.disc:has(img[src*="k-design"]) img,
+.disc:has(img[src*="mens-health"]) img,
+.disc:has(img[src*="wired"]) img,
+.disc:has(img[src*="nike"]) img,
+.disc:has(img[src*="brookstone"]) img,
+.disc:has(img[src*="china-good-design"]) img {
     opacity: 0;
 }
 
@@ -1207,6 +1221,7 @@ button:focus-visible {
 .disc:has(img[src*="wired"])       { background-image: url("images/archive-wired-germany.jpg");       background-size: 135%; background-position: 52% 58%; }
 .disc:has(img[src*="nike"])        { background-image: url("images/archive-nike-run-baby-run.png");   background-size: 175%; background-position: 88% 19%; }
 .disc:has(img[src*="brookstone"])  { background-image: url("images/archive-brookstone-retail.jpg");   background-size: cover; background-position: 50% 45%; }
+.disc:has(img[src*="china-good-design"]) { background-image: url("images/archive-china-good-design.jpg"); background-size: 220%; background-position: 12% 50%; }
 
 /* concentric grooves limited to an outer ring + a label-edge line */
 .disc::after {
@@ -1439,6 +1454,13 @@ button:focus-visible {
 [data-reveal].is-visible {
     opacity: 1;
     transform: none;
+}
+
+@media (scripting: none) {
+    [data-reveal] {
+        opacity: 1;
+        transform: none;
+    }
 }
 
 /* ----- Cursor music notes (toned down) ---------------------------------- */

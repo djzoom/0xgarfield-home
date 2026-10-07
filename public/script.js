@@ -234,14 +234,28 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
 
     let modal = null;
 
+    const isZh = (document.documentElement.lang || "").toLowerCase().startsWith("zh");
+    let inerted = [];
+
     const escHandler = (e) => {
-        if (e.key === "Escape") close();
+        if (e.key === "Escape") { close(); return; }
+        if (e.key === "Tab" && modal) {
+            const focusables = modal.querySelectorAll("button, iframe, [tabindex]:not([tabindex='-1'])");
+            if (!focusables.length) return;
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+            if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+            else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+            else if (!modal.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+        }
     };
 
     const close = () => {
         if (!modal) return;
         document.removeEventListener("keydown", escHandler);
         document.body.style.overflow = "";
+        inerted.forEach((el) => el.removeAttribute("inert"));
+        inerted = [];
         modal.remove();
         modal = null;
         trigger.setAttribute("aria-pressed", "false");
@@ -272,7 +286,7 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         const closeBtn = document.createElement("button");
         closeBtn.type = "button";
         closeBtn.className = "media-embed-modal-close";
-        closeBtn.setAttribute("aria-label", "Close 3D viewer");
+        closeBtn.setAttribute("aria-label", isZh ? "关闭 3D 预览" : "Close 3D viewer");
         closeBtn.textContent = "\u00d7";
         closeBtn.addEventListener("click", close);
 
@@ -280,6 +294,8 @@ document.querySelectorAll("[data-embed-figure]").forEach((figure) => {
         modal.appendChild(closeBtn);
         modal.addEventListener("click", (e) => { if (e.target === modal) close(); });
 
+        inerted = Array.from(document.body.children).filter((el) => el !== modal && el.tagName !== "SCRIPT");
+        inerted.forEach((el) => el.setAttribute("inert", ""));
         document.body.appendChild(modal);
         document.body.style.overflow = "hidden";
         document.addEventListener("keydown", escHandler);
