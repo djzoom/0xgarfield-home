@@ -38,7 +38,14 @@ into `dist/`, deployed to Cloudflare by GitHub Actions on every push to `main`.
 - Do not mention: Vensa, Mensa, visa/immigration status, current city.
 
 ## Signal colour (--signal), the only allowed uses
-Cursor notes; active-nav underline; axis dots; disc centre; primary-button and close-button hover rings; the brand mark's centre dot (the mark is a miniature disc). Never text, never fills.
+The needle tip in the homepage opening; cursor notes; active-nav underline; axis dots; disc centre; primary-button and close-button hover rings; the brand mark's centre dot (the mark is a miniature disc). Never text, never fills.
+
+## Homepage record crate (public/crate.css, public/crate.js)
+- Work is shown as four record sleeves in this order: Run Baby Run, PILO, Talktalk, AURORA.
+- Each sleeve uses its project's own colours (RBR neon on dark green, PILO navy logo on white, Talktalk CRT green, AURORA pixel cyan on navy). These are brand colours, not the site accent.
+- Lower band artwork is public/images/band-*.svg (outlined type, no font loading). PILO uses its original logo paths.
+- Record detail copy, facts, colours and UI strings live in the JSON block `#cr-data` inside index.html / index-zh.html. Edit EN and ZH together.
+- Sound in the player is synthesized in the browser and labelled as such. Never present it as an original recording.
 
 ## Voice
 Calm, specific, no exclamation marks, no marketing superlatives. Short sentences.
