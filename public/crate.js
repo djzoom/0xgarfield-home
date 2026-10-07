@@ -166,7 +166,7 @@
         if (fio) { fio.disconnect(); fio = null; }
         if (!mq.matches) { recs.forEach(function (r) { r.classList.remove("cr-active"); }); return; }
         fio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("cr-active", e.isIntersecting); }); },
-            { root: crate, rootMargin: "0px -40% 0px -40%", threshold: 0 });
+            { rootMargin: "-38% 0px -38% 0px", threshold: 0 });
         recs.forEach(function (r) { fio.observe(r); });
     }
     if (mq.addEventListener) mq.addEventListener("change", focusSetup); else mq.addListener(focusSetup);
