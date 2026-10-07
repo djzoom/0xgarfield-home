@@ -1,0 +1,44 @@
+# AGENTS.md — 0xgarfield.com
+
+## What this is
+Personal site of Garfield Wang (王众). Static HTML, built by `node scripts/build.mjs`
+into `dist/`, deployed to Cloudflare by GitHub Actions on every push to `main`.
+
+## Where things live
+- Page templates: `src/pages/*.html` — EN and ZH are separate files and must stay in sync
+  (index/index-zh, about/about-zh, recognition/recognition-zh, writing/writing-zh).
+- Editable copy: `config/content-en.json` and `config/content-zh.json` (same keys).
+- Global links/versions: `config/site.json`. Bump `assets.cssVersion`/`scriptVersion`
+  (YYYYMMDD-NN) when CSS/JS changes.
+- Styles/scripts: `public/styles.css`, `public/script.js`.
+- `/home/` is a legacy route; the build serves `index.html` there. There is no separate home.html.
+
+## Hard rules
+- Never edit `dist/`, `.github/`, `worker/`, or anything named *secret*.
+- Never push to `main`. Work on a branch `agent/<topic>`, open a PR, stop.
+- Every text change must be made in BOTH languages or explicitly flagged as EN-only/ZH-only.
+- Run `node scripts/build.mjs` before committing; it must succeed. Check `dist/` for
+  `/`, `/index-zh`, `/about`, `/recognition`, `/404`.
+- Do not invent facts, dates, awards, quotes or press. If a fact is not in the
+  "Facts" list below or already on the site, leave a `<!-- TODO: confirm -->` and ask.
+
+## Facts (source of truth — use exactly these wordings)
+- Emmy: "Judge, 47th News & Documentary Emmy® Awards — Documentary Categories (Sound),
+  NATAS, 2026". ZH: 第 47 届美国新闻与纪录片艾美奖纪录片单元声音类评委（2026）.
+  Never "International Emmy", never "Television Academy".
+- Red Dot Award: Product Design 2016, product PILO, Soundario Inc.
+- Broadcasting: China Radio International Hit FM (2006–2012); Phoenix U Radio,
+  Hong Kong (2013–2014); Highlights Music Station (2020–2022).
+- Products: PILO® (2015–), Run Baby Run® (2013–), Talktalk (2026–), AURORA (99 lessons, fully open source, MIT — never "open core" or "Lesson 1 free").
+- Talktalk testimonial is from a Phoenix TV (Hong Kong) news anchor / 香港凤凰卫视新闻主播.
+- China Good Design: Gold, 2015 (PILO in the China Good Design Yearbook 2015/2016).
+- Wording: "sleep and relaxation audio" / 睡眠与放松音频 — never "sleep aid"/助眠.
+- Do not mention: Vensa, Mensa, visa/immigration status, current city.
+
+## Voice
+Calm, specific, no exclamation marks, no marketing superlatives. Short sentences.
+ZH copy is written natively, not translated word-for-word from EN.
+
+## Done means
+A PR with: what changed (EN/ZH), build output confirmed, screenshots or dist diff
+for any layout change, and a list of anything you were unsure about.

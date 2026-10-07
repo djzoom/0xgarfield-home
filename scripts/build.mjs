@@ -13,7 +13,6 @@ const contentZhPath = path.join(projectRoot, "config", "content-zh.json");
 
 const routeAliases = new Map([
   ["index-zh.html", path.join("index-zh", "index.html")],
-  ["home.html", path.join("home", "index.html")],
   ["about.html", path.join("about", "index.html")],
   ["about-zh.html", path.join("about-zh", "index.html")],
   ["recognition.html", path.join("recognition", "index.html")],
@@ -51,11 +50,16 @@ function renderTemplate(template, variables, filename) {
 }
 
 async function writeAliasIfNeeded(filename, rendered) {
+  const aliases = [];
   const alias = routeAliases.get(filename);
-  if (!alias) return;
-  const aliasPath = path.join(distDir, alias);
-  await mkdir(path.dirname(aliasPath), { recursive: true });
-  await writeFile(aliasPath, rendered, "utf8");
+  if (alias) aliases.push(alias);
+  // Legacy route: /home/ used to be a separate copy of the homepage. Serve index.html there instead.
+  if (filename === "index.html") aliases.push(path.join("home", "index.html"));
+  for (const target of aliases) {
+    const aliasPath = path.join(distDir, target);
+    await mkdir(path.dirname(aliasPath), { recursive: true });
+    await writeFile(aliasPath, rendered, "utf8");
+  }
 }
 
 async function copyDirectoryContents(sourceDir, targetDir) {
