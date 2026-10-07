@@ -6,7 +6,7 @@ into `dist/`, deployed to Cloudflare by GitHub Actions on every push to `main`.
 
 ## Where things live
 - Page templates: `src/pages/*.html` — EN and ZH are separate files and must stay in sync
-  (index/index-zh, about/about-zh, recognition/recognition-zh, writing/writing-zh).
+  (index/index-zh, about/about-zh, recognition/recognition-zh). writing/writing-zh are redirects to the homepage; the Writing section was retired until there is published work.
 - Editable copy: `config/content-en.json` and `config/content-zh.json` (same keys).
 - Global links/versions: `config/site.json`. Bump `assets.cssVersion`/`scriptVersion`
   (YYYYMMDD-NN) when CSS/JS changes.
