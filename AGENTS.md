@@ -45,7 +45,9 @@ The needle tip in the homepage opening; cursor notes; active-nav underline; axis
 - Each sleeve uses its project's own colours (RBR neon on dark green, PILO navy logo on white, Talktalk CRT green, AURORA pixel cyan on navy). These are brand colours, not the site accent.
 - Lower band artwork is public/images/band-*.svg (outlined type, no font loading). PILO uses its original logo paths.
 - Record detail copy, facts, colours and UI strings live in the JSON block `#cr-data` inside index.html / index-zh.html. Edit EN and ZH together.
-- Sound in the player is synthesized in the browser and labelled as such. Never present it as an original recording.
+- The player plays a 32-second, loudness-normalised excerpt from each project's own library (public/audio/*-v1.mp3; RBR library, Kat Records, CHL). PILO's clip is a stand-in until the Yunmeng (云梦) recordings are found.
+- /images/* is cached immutable for a year: when an image or band SVG changes, give it a new file name.
+- Site type: Newsreader (EN) with Noto Serif SC (ZH); Geist Mono for metadata.
 
 ## Voice
 Calm, specific, no exclamation marks, no marketing superlatives. Short sentences.

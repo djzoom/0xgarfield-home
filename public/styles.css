@@ -13,7 +13,7 @@
     --accent-hover: #163B2C;
     --signal: #C9F53B;
 
-    --font-sans: "Geist", system-ui, -apple-system, "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    --font-sans: "Newsreader", "Noto Serif SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
     --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --content-max: 1160px;
@@ -66,7 +66,7 @@ a:hover { color: var(--accent-hover); text-decoration-color: currentColor; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
 h1, h2, h3 { margin: 0; font-weight: 500; letter-spacing: -0.015em; line-height: 1.15; text-wrap: balance; }
-html[lang^="zh"] h1, html[lang^="zh"] h2, html[lang^="zh"] h3 { letter-spacing: 0; line-height: 1.35; }
+html[lang^="zh"] h1, html[lang^="zh"] h2, html[lang^="zh"] h3 { letter-spacing: 0; line-height: 1.35; font-weight: 600; }
 h1 { font-size: var(--fs-display); }
 h2 { font-size: var(--fs-h2); }
 h3 { font-size: var(--fs-h3); }
