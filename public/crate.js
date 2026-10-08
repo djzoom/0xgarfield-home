@@ -432,7 +432,6 @@
     function open(rec, push) {
         if (busy || current) return;
         busy = true; current = rec; var k = rec.dataset.k, o = stOf(rec);
-        document.dispatchEvent(new CustomEvent("gw:audio", { detail: "player" }));
         o.hold = true;
         var sd = discBox(rec), ang = angleOf(o), realDisc = rec.querySelector(".cr-disc");
         P.className = "pl pl-open cr-" + k; fill(k);
