@@ -1,17 +1,17 @@
-/* 0xgarfield.com — design system v2 (2026-10)
-   One token set, six components. Beige paper, deep green for anything you can act on,
-   a little signal yellow-green for sound marks only. */
+/* 0xgarfield.com — design system v3 (2026-10-08)
+   Kraft-paper sleeve palette: kraft ground, dark brown ink, rust for anything you can act on.
+   Record sleeves, records and the player keep each project's own colours. */
 
 :root {
-    --bg: #EDE6D6;
-    --surface: #F5F0E4;
-    --surface-media: #E3DCC9;
-    --ink: #1F2A22;
-    --muted: #5E675C;
-    --line: #D2CBB8;
-    --accent: #1F4D3A;
-    --accent-hover: #163B2C;
-    --signal: #C9F53B;
+    --bg: #DCCBA8;
+    --surface: #E6D8BA;
+    --surface-media: #CDBA93;
+    --ink: #2A2018;
+    --muted: #5E5040;
+    --line: #C2AE87;
+    --accent: #7A2E16;
+    --accent-hover: #5C210F;
+    --signal: #7A2E16;
 
     --font-sans: "Newsreader", "Noto Serif SC", "Songti SC", "STSong", "SimSun", Georgia, serif;
     --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;

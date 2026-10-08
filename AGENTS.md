@@ -37,6 +37,8 @@ into `dist/`, deployed to Cloudflare by GitHub Actions on every push to `main`.
 - Wording: "sleep and relaxation audio" / 睡眠与放松音频 — never "sleep aid"/助眠.
 - Do not mention: Vensa, Mensa, visa/immigration status, current city.
 
+## Palette (v3, kraft): --bg #DCCBA8, --ink #2A2018, --muted #5E5040, --accent #7A2E16 (rust). --signal now equals the rust accent.
+
 ## Signal colour (--signal), the only allowed uses
 The needle tip in the homepage opening; cursor notes; active-nav underline; axis dots; disc centre; primary-button and close-button hover rings; (the brand mark is now a plain circle in the portrait's backdrop colour #E1AB49, not signal). Never text, never fills.
 
