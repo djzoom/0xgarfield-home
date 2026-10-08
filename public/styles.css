@@ -319,10 +319,10 @@ html[lang^="zh"] .hero h1 { max-width: 14em; }
 .prose-note { color: var(--muted); }
 .prose-contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 1.25rem; }
 
-.about-header { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); gap: clamp(28px, 5vw, 72px); align-items: start; }
+.about-header { display: grid; grid-template-columns: minmax(0, 1fr) 168px; gap: clamp(24px, 4vw, 56px); align-items: end; }
 .about-portrait { margin: 0; }
 .about-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--surface-media); }
-@media (max-width: 820px) { .about-header { grid-template-columns: 1fr; } .about-portrait { max-width: 320px; } }
+@media (max-width: 820px) { .about-header { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; } }
 
 .prose-facts { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }
 .prose-fact { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
