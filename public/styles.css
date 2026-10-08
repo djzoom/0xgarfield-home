@@ -180,7 +180,8 @@ p + p { margin-top: 1em; }
     margin-inline: auto;
     padding-top: clamp(40px, 7vw, 88px);
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1fr) 168px;
+    gap: clamp(24px, 4vw, 56px);
     align-items: end;
 }
 .hero-identity { font-size: 1.05rem; color: var(--muted); margin-bottom: 1.25rem; }
@@ -188,11 +189,13 @@ p + p { margin-top: 1em; }
 .hero h1 { max-width: 15ch; }
 html[lang^="zh"] .hero h1 { max-width: 14em; }
 .hero-lede { max-width: var(--reading-max); margin-top: 1.5rem; font-size: 1.125rem; color: var(--ink); }
-.hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem; }
+.hero-avatar { margin: 0; }
+.hero-avatar img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 0; border-radius: 50%; background: var(--surface-media); display: block; }
 
 
 @media (max-width: 820px) {
-    .hero { grid-template-columns: 1fr; align-items: start; }
+    .hero { grid-template-columns: minmax(0, 1fr); gap: 20px; align-items: start; }
+    .hero-avatar { order: -1; width: 76px; }
     .hero h1, html[lang^="zh"] .hero h1 { max-width: none; }
 }
 
