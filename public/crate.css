@@ -137,6 +137,11 @@ html[lang^="zh"] .pl-body p { line-height: 1.8; }
 .pl-facts dd { margin: 0; color: color-mix(in srgb, var(--bf) 88%, var(--bb)); }
 .pl-go { display: inline-flex; align-items: center; min-height: 44px; margin-top: 28px; padding: 0 20px; border-radius: 999px; background: var(--bf); color: var(--bb); text-decoration: none; font-weight: 600; }
 .pl-go:hover { color: var(--bb); box-shadow: 0 0 0 2px var(--bb), 0 0 0 4px var(--bf); }
+.pl-fly { position: fixed; z-index: 4; display: none; border-radius: 50%; pointer-events: none; transform-origin: 50% 50%; will-change: transform; }
+.pl-fly .cr-rot { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; }
+.pl-fly canvas { width: 100%; height: 100%; display: block; }
+.pl-stand { position: fixed; z-index: 5; pointer-events: none; }
+.pl-stand .cr-sleeve { position: absolute; inset: 0; transform: none; transition: none; }
 .pl-close { position: fixed; top: 16px; right: 16px; width: 48px; height: 48px; border-radius: 50%; z-index: 1010; color: var(--bf); display: grid; place-items: center; opacity: 0; transition: opacity .4s; background: none; border: 0; cursor: pointer; }
 .pl.pl-shown .pl-close { opacity: 1; }
 .pl :focus-visible { outline: 2px solid var(--bf); outline-offset: 3px; }

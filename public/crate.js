@@ -164,7 +164,7 @@
        Each record moves on a slightly under-damped spring. The loop runs only while the crate is on screen. */
     var mq = window.matchMedia("(max-width: 860px)"), still = calm.matches;
     var CFG = { desk: { rest: .46, reach: .22, sigma: .95 }, phone: { rest: .093, reach: .47, sigma: .62 } };
-    var st = recs.map(function (r) { return { el: r, x: 0, y: 0, size: 1, pull: 0, v: 0, start: Infinity }; });
+    var st = recs.map(function (r) { return { el: r, x: 0, y: 0, size: 1, pull: 0, v: 0, start: Infinity, hold: false }; });
     var fx = innerWidth / 2, fy = innerHeight * .42, have = null, raf = 0, last = 0, seen = false, entered = false, t0 = performance.now();
     function measure() {   // sleeve centres in page coordinates, measured once per layout
         var sy = scrollY, sx = scrollX;
@@ -191,6 +191,7 @@
                 var dx = (o.x - sx) - fx, dy = (o.y - sy) - fy, d = Math.sqrt(dx * dx + dy * dy) / (o.size * cfg.sigma);
                 want = cfg.rest + cfg.reach * Math.exp(-d * d);
             }
+            if (o.hold) return;                                  // a record that is out on the turntable stays put
             // spring: stiffness 140, damping ratio ~0.78 (a touch of follow-through, no wobble)
             var k = 140, c = 2 * Math.sqrt(k) * .78;
             o.v += (k * (want - o.pull) - c * o.v) * dt;
@@ -401,47 +402,90 @@
         [page, header].forEach(function (n) { if (n) n.inert = on; });
         document.documentElement.style.overflow = on ? "hidden" : "";
     }
+    /* ---------- the hand-off between the crate and the turntable ----------
+       Only the record travels. The sleeve never leaves the crate: a stand-in copy of it sits exactly over
+       the real one, above the travelling record, so the record leaves from behind the sleeve and goes back
+       behind it. The stand-in fades with the backdrop, so the sleeve dissolves and reappears instead of popping.
+       The travelling record lives in its own layer (it does not fade with the deck), and it starts and ends
+       at the real record's centre, diameter and angle. That record's pull is frozen while it is away. */
+    var fly = document.createElement("div"); fly.className = "pl-fly"; fly.setAttribute("aria-hidden", "true");
+    fly.innerHTML = '<div class="cr-rot"><canvas></canvas></div><div class="cr-sheen"></div>';
+    var flyCanvas = fly.querySelector("canvas"), stand = document.createElement("div");
+    stand.className = "pl-stand"; stand.setAttribute("aria-hidden", "true");
+    P.appendChild(fly); P.appendChild(stand);
+    function stOf(rec) { return st.filter(function (o) { return o.el === rec; })[0]; }
+    function discBox(rec) {      // the record's true circle on screen, ignoring the bounding box of its tilt
+        var d = rec.querySelector(".cr-disc"), r = d.getBoundingClientRect(), g = rec.querySelector(".cr-stage");
+        var w = d.offsetWidth * (g.getBoundingClientRect().width / g.offsetWidth);
+        return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, w: w };
+    }
+    function boxOf(el) { var r = el.getBoundingClientRect(); return { cx: r.left + r.width / 2, cy: r.top + r.height / 2, w: r.width }; }
+    function place(b) { fly.style.left = (b.cx - b.w / 2) + "px"; fly.style.top = (b.cy - b.w / 2) + "px"; fly.style.width = fly.style.height = b.w + "px"; }
+    function from(f, t, deg) { return "translate(" + (f.cx - t.cx) + "px," + (f.cy - t.cy) + "px) scale(" + (f.w / t.w) + ") rotate(" + deg + "deg)"; }
+    function showStand(rec, k) {
+        var r = rec.querySelector(".cr-sleeve").getBoundingClientRect();
+        stand.className = "pl-stand cr-" + k;
+        stand.style.left = r.left + "px"; stand.style.top = r.top + "px"; stand.style.width = r.width + "px"; stand.style.height = r.height + "px";
+        stand.innerHTML = rec.querySelector(".cr-sleeve").outerHTML;
+    }
+    function angleOf(o) { return o.pull * (mq.matches ? 12 : 9); }
     function open(rec, push) {
         if (busy || current) return;
-        busy = true; current = rec; var k = rec.dataset.k;
+        busy = true; current = rec; var k = rec.dataset.k, o = stOf(rec);
+        o.hold = true;
+        var sd = discBox(rec), ang = angleOf(o), realDisc = rec.querySelector(".cr-disc");
         P.className = "pl pl-open cr-" + k; fill(k);
-        pSleeve.innerHTML = rec.querySelector(".cr-sleeve").innerHTML;
         lockPage(true);
         if (push !== false) { try { history.pushState({ crPlayer: k }, "", "#" + k); } catch (err) {} }
         paint(pCanvas, k);
-        var sd = rec.querySelector(".cr-disc").getBoundingClientRect(), ss = rec.querySelector(".cr-sleeve").getBoundingClientRect(),
-            dd = pDisc.getBoundingClientRect(), ds = pSleeve.getBoundingClientRect();
-        rec.style.visibility = "hidden";
-        var q = calm.matches, t = q ? 1 : 950, o = { duration: t, easing: "cubic-bezier(.45,.05,.2,1)", fill: "both" };
-        bgd.animate([{ opacity: 0 }, { opacity: 1 }], { duration: q ? 1 : 500, easing: "ease-out", fill: "both" });
+        var dd = boxOf(pDisc);
+        place(dd); paint(flyCanvas, k); fly.style.display = "block";
+        showStand(rec, k);
+        pDisc.style.visibility = "hidden"; realDisc.style.visibility = "hidden";
+        var q = calm.matches, t = q ? 1 : 950, fade = { duration: q ? 1 : 520, easing: "ease-out", fill: "both" };
+        bgd.animate([{ opacity: 0 }, { opacity: 1 }], fade);
+        stand.animate([{ opacity: 1 }, { opacity: 0 }], fade);
         deck.animate([{ opacity: 0, transform: "translateY(24px) scale(.97)" }, { opacity: 1, transform: "none" }], { duration: q ? 1 : 650, delay: q ? 0 : 120, easing: "cubic-bezier(.2,.8,.2,1)", fill: "both" });
-        // lifted off the sleeve, carried over, set down on the spindle
-        pDisc.animate([
-            { transform: delta(sd, dd), filter: "drop-shadow(0 6px 8px rgba(0,0,0,.25))" },
-            { transform: "translateY(-5%) scale(1.04)", filter: "drop-shadow(0 26px 22px rgba(0,0,0,.35))", offset: .72 },
-            { transform: "none", filter: "drop-shadow(0 4px 4px rgba(0,0,0,.3))" }], o);
-        if (ds.width) pSleeve.animate([{ transform: delta(ss, ds) }, { transform: "none" }], o);
+        // drawn out of the sleeve, lifted, carried over, set down on the spindle
+        var a = fly.animate([
+            { transform: from(sd, dd, ang), filter: "drop-shadow(0 6px 8px rgba(0,0,0,.25))" },
+            { transform: "translateY(-5%) scale(1.04) rotate(0deg)", filter: "drop-shadow(0 26px 22px rgba(0,0,0,.35))", offset: .72 },
+            { transform: "none", filter: "drop-shadow(0 4px 4px rgba(0,0,0,.3))" }],
+            { duration: t, easing: "cubic-bezier(.45,.05,.2,1)", fill: "both" });
         requestAnimationFrame(function () { P.classList.add("pl-shown"); });
         scope();
-        setTimeout(function () { busy = false; closeBtn.focus({ preventScroll: true }); if (push !== false) play(); }, t);
+        a.onfinish = function () {
+            pDisc.style.visibility = ""; fly.style.display = "none"; a.cancel();
+            busy = false; closeBtn.focus({ preventScroll: true }); if (push !== false) play();
+        };
     }
     function close(fromPop) {
         if (busy || !current) return;
         if (!fromPop && history.state && history.state.crPlayer) { history.back(); return; }
-        busy = true; var rec = current;
+        busy = true; var rec = current, k = rec.dataset.k, o = stOf(rec), realDisc = rec.querySelector(".cr-disc");
         stop(true); el.removeAttribute("src"); el.dataset.k = ""; el.load();
         P.classList.remove("pl-shown"); cancelAnimationFrame(rateRaf);
         if (spinA) { spinA.cancel(); dotsA.cancel(); spinA = dotsA = null; }
-        var dd = pDisc.getBoundingClientRect(), ds = pSleeve.getBoundingClientRect(),
-            sd = rec.querySelector(".cr-disc").getBoundingClientRect(), ss = rec.querySelector(".cr-sleeve").getBoundingClientRect();
-        var q = calm.matches, t = q ? 1 : 750, o = { duration: t, easing: "cubic-bezier(.45,.05,.2,1)", fill: "both" };
-        var a = pDisc.animate([{ transform: "none" }, { transform: "translateY(-5%) scale(1.04)", offset: .3 }, { transform: delta(sd, dd) }], o);
-        if (ds.width) pSleeve.animate([{ transform: "none" }, { transform: delta(ss, ds) }], o);
-        deck.animate([{ opacity: 1 }, { opacity: 0 }], { duration: q ? 1 : 400, easing: "ease-in", fill: "both" });
-        bgd.animate([{ opacity: 1 }, { opacity: 0 }], { duration: q ? 1 : 600, delay: q ? 0 : 150, easing: "ease-in", fill: "both" });
+        var dd = boxOf(pDisc), sd = discBox(rec), ang = angleOf(o);
+        place(sd); paint(flyCanvas, k); fly.style.display = "block"; pDisc.style.visibility = "hidden";
+        showStand(rec, k);
+        var q = calm.matches, t = q ? 1 : 800;
+        var a = fly.animate([
+            { transform: from(dd, sd, 0), filter: "drop-shadow(0 4px 4px rgba(0,0,0,.3))" },
+            { transform: from({ cx: dd.cx, cy: dd.cy - dd.w * .05, w: dd.w * 1.04 }, sd, 0), filter: "drop-shadow(0 26px 22px rgba(0,0,0,.35))", offset: .28 },
+            { transform: "rotate(" + ang + "deg)", filter: "drop-shadow(0 6px 8px rgba(0,0,0,.25))" }],
+            { duration: t, easing: "cubic-bezier(.45,.05,.2,1)", fill: "both" });
+        deck.animate([{ opacity: 1 }, { opacity: 0 }], { duration: q ? 1 : 380, easing: "ease-in", fill: "both" });
+        // the sleeve is fully back before the record reaches it, so the record slides in behind it
+        bgd.animate([{ opacity: 1 }, { opacity: 0 }], { duration: q ? 1 : 560, delay: q ? 0 : 200, easing: "ease-in-out", fill: "both" });
+        stand.animate([{ opacity: 0 }, { opacity: 1 }], { duration: q ? 1 : 360, easing: "ease-out", fill: "both" });
         a.onfinish = function () {
-            rec.style.visibility = ""; P.className = "pl"; lockPage(false); cancelAnimationFrame(scopeRaf);
+            // the travelling record and the real one now coincide exactly: swap without a visible change
+            realDisc.style.visibility = ""; o.hold = false;
+            fly.style.display = "none"; stand.innerHTML = "";
+            P.className = "pl"; lockPage(false); cancelAnimationFrame(scopeRaf);
             P.getAnimations({ subtree: true }).forEach(function (x) { x.cancel(); });
+            pDisc.style.visibility = "";
             current = null; busy = false; rec.focus({ preventScroll: true });
             if (A) A.ctx.suspend();
         };
