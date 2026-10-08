@@ -151,89 +151,111 @@
     function paintCrate() { recs.forEach(function (r) { paint(r.querySelector(".cr-disc canvas"), r.dataset.k); }); }
     (window.requestIdleCallback || function (f) { setTimeout(f, 60); })(paintCrate);
     var rz; addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(paintCrate, 200); });
-    if ("IntersectionObserver" in window && !calm.matches) {
-        var io = new IntersectionObserver(function (es) {
-            es.forEach(function (e) {
-                if (!e.isIntersecting) return;
-                crate.classList.add("cr-in"); io.disconnect();
-                setTimeout(function () { crate.classList.add("cr-settled"); }, 2200);
-            });
-        }, { threshold: .15 });
-        io.observe(crate);
-    } else crate.classList.add("cr-in", "cr-settled");
-    var mq = window.matchMedia("(max-width: 860px)"), fio = null;
-    function focusSetup() {
-        if (fio) { fio.disconnect(); fio = null; }
-        if (!mq.matches) { recs.forEach(function (r) { r.classList.remove("cr-active"); }); return; }
-        fio = new IntersectionObserver(function (es) { es.forEach(function (e) { e.target.classList.toggle("cr-active", e.isIntersecting); }); },
-            { rootMargin: "-38% 0px -38% 0px", threshold: 0 });
-        recs.forEach(function (r) { fio.observe(r); });
+    /* ---------- one motion engine for every record, phone and desktop ----------
+       Each record has one number, its pull: how far it stands out of the sleeve, as a share of its own size.
+       Desktop draws it as translateX(pull), phone as translateY(-pull) (see crate.css).
+         pull = rest + boost + side * bias
+           desktop: rest .48 (half shows)   boost .18 on hover/focus   bias = pointer x across the window
+           phone:   rest .093 (a 60° arc)   boost .41 while scrolling past the middle
+                    bias = 0.6 * tilt + 0.4 * sideways finger travel (finger alone if there is no tilt)
+         side = -1 for the left column, +1 for the right, so records in a row never move in lockstep.
+       A single requestAnimationFrame loop eases every pull toward its target with time-based smoothing
+       and stops as soon as everything has settled; input events only update numbers and wake the loop. */
+    var mq = window.matchMedia("(max-width: 860px)"), still = calm.matches;
+    var CFG = { desk: { rest: .48, boost: .18, side: .07 }, phone: { rest: .093, boost: .41, side: .2 } };
+    var st = recs.map(function (r) { return { el: r, pull: 0, side: 1, active: false, hover: false, start: Infinity }; });
+    var bias = 0, pointer = 0, tilt = 0, finger = 0, hasTilt = false, base = null, fx0 = null, moving = false, moveT = 0;
+    var raf = 0, last = 0, entered = false;
+    function measure() {
+        var mid = crate.getBoundingClientRect().left + crate.clientWidth / 2;
+        st.forEach(function (o) { var c = o.el.getBoundingClientRect(); o.side = (c.left + c.width / 2) < mid ? -1 : 1; });
     }
-    /* ---------- mobile: each record's pull is computed, not toggled ----------
-       pull = rest + scroll + side * bias
-         rest   0.093  -> exactly 1/6 of the rim shows above the sleeve
-         scroll 0.41   -> added while the page moves and the record crosses the middle band
-         bias  [-1, 1] -> weighted mix of phone tilt (0.6) and sideways finger movement (0.4);
-                          right column gets +bias, left column -bias, so a row never moves in lockstep */
-    var REST = .093, SCROLL = .41, SIDE = .2, moving = false, moveT = 0, bias = 0, tilt = 0, finger = 0,
-        hasTilt = false, base = null, fx0 = null, loop = 0, pulls = recs.map(function () { return REST; });
-    function sideOf(r) { var c = r.getBoundingClientRect(); return (c.left + c.width / 2) < innerWidth / 2 ? -1 : 1; }
-    function kick() { if (!loop && mq.matches && !calm.matches) loop = requestAnimationFrame(frame); }
-    function frame() {
-        loop = 0;
-        if (fx0 === null) finger *= .9;                     // the finger's influence fades once it lifts
-        var wT = hasTilt ? .6 : 0, wF = hasTilt ? .4 : 1, target = Math.max(-1, Math.min(1, wT * tilt + wF * finger));
-        bias += (target - bias) * .18;
-        var busy = Math.abs(target - bias) > .002 || Math.abs(finger) > .002;
-        recs.forEach(function (r, i) {
-            var want = REST + (moving && r.classList.contains("cr-active") ? SCROLL : 0) + sideOf(r) * bias * SIDE;
-            want = Math.max(.02, Math.min(.62, want));
-            pulls[i] += (want - pulls[i]) * .14;            // spring toward the target: no CSS transition fighting the sensors
-            if (Math.abs(want - pulls[i]) > .001) busy = true;
-            r.style.setProperty("--pull", pulls[i].toFixed(4));
+    function wake() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(frame); } }
+    function frame(now) {
+        raf = 0;
+        var dt = Math.min(64, now - last); last = now;
+        var k = still ? 1 : 1 - Math.exp(-dt / 110);            // ~110 ms time constant, frame-rate independent
+        var phone = mq.matches, cfg = phone ? CFG.phone : CFG.desk, awake = false;
+        if (phone && fx0 === null) finger *= Math.exp(-dt / 220);
+        var target = phone ? (hasTilt ? .6 * tilt + .4 * finger : finger) : pointer;
+        target = Math.max(-1, Math.min(1, target));
+        bias += (target - bias) * k;
+        if (Math.abs(target - bias) > .001 || Math.abs(finger) > .001) awake = true;
+        st.forEach(function (o) {
+            var want = 0;
+            if (entered && now >= o.start) {
+                var on = phone ? (moving && o.active) : o.hover;
+                want = cfg.rest + (on ? cfg.boost : 0) + o.side * bias * cfg.side;
+                want = Math.max(0, Math.min(phone ? .62 : .68, want));
+            } else if (entered) awake = true;
+            var d = want - o.pull;
+            if (Math.abs(d) > .0005) { o.pull += d * (entered && o.start > now - 400 && !still ? k * .55 : k); awake = true; }
+            else o.pull = want;
+            o.el.style.setProperty("--pull", o.pull.toFixed(4));
         });
-        if (busy) kick();
+        if (awake) wake();
     }
+    // entrance: the sleeves arrive (CSS), then each record slides out of its sleeve in turn
+    function enter() {
+        if (entered) return;
+        entered = true; crate.classList.add("cr-in");
+        var t = performance.now();
+        st.forEach(function (o, i) { o.start = still ? t : t + 500 + i * 110; });
+        setTimeout(function () { crate.classList.add("cr-settled"); }, 2200);
+        measure(); wake();
+    }
+    if ("IntersectionObserver" in window && !still) {
+        var io = new IntersectionObserver(function (es) { if (es.some(function (e) { return e.isIntersecting; })) { io.disconnect(); enter(); } }, { threshold: .15 });
+        io.observe(crate);
+        // phone: which records are crossing the middle band of the screen
+        var band = new IntersectionObserver(function (es) {
+            es.forEach(function (e) { st[recs.indexOf(e.target)].active = e.isIntersecting; }); wake();
+        }, { rootMargin: "-38% 0px -38% 0px", threshold: 0 });
+        recs.forEach(function (r) { band.observe(r); });
+    } else enter();
+    var rz; addEventListener("resize", function () { clearTimeout(rz); rz = setTimeout(function () { paintCrate(); measure(); wake(); }, 150); });
     addEventListener("scroll", function () {
         if (!mq.matches) return;
-        moving = true; crate.classList.add("cr-moving"); kick();
-        clearTimeout(moveT); moveT = setTimeout(function () { moving = false; crate.classList.remove("cr-moving"); kick(); }, 450);
+        moving = true; wake();
+        clearTimeout(moveT); moveT = setTimeout(function () { moving = false; wake(); }, 450);
     }, { passive: true });
-    /* tilt: left/right (gamma), relative to a slowly drifting baseline so holding the phone at an angle settles back to neutral */
+    // desktop: hover/focus boost, pointer x as bias, pointer also turns the light on the records
+    st.forEach(function (o) {
+        ["pointerenter", "focus"].forEach(function (t) { o.el.addEventListener(t, function (e) { if (e.pointerType === "touch") return; o.hover = true; wake(); }); });
+        ["pointerleave", "blur"].forEach(function (t) { o.el.addEventListener(t, function () { o.hover = false; wake(); }); });
+    });
+    var lq = 0, px = .5, py = .5;
+    if (window.matchMedia("(hover: hover)").matches && !still) {
+        addEventListener("pointermove", function (e) {
+            px = e.clientX / innerWidth; py = e.clientY / innerHeight; pointer = (px - .5) * 2; wake();
+            if (!lq) lq = requestAnimationFrame(function () { lq = 0; root.style.setProperty("--cr-la", ((px - .5) * 70 + (py - .5) * 30).toFixed(1)); });
+        }, { passive: true });
+        document.documentElement.addEventListener("pointerleave", function () { pointer = 0; wake(); });
+    }
+    // phone: tilt (left/right, relative to a baseline that drifts over ~3 s) and sideways finger travel
     function onTilt(e) {
         if (e.gamma == null) return;
         hasTilt = true;
         if (base === null) base = e.gamma;
-        base += (e.gamma - base) * .006;   // ~3 s at 60 Hz: holding a tilt slowly becomes the new neutral
-        tilt = Math.max(-1, Math.min(1, (e.gamma - base) / 18));
-        kick();
+        base += (e.gamma - base) * .006;
+        tilt = Math.max(-1, Math.min(1, (e.gamma - base) / 18)); wake();
     }
-    function listenTilt() { addEventListener("deviceorientation", onTilt, { passive: true }); }
-    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
-        // iOS asks once, from a tap
-        var askTilt = function () {
-            removeEventListener("touchend", askTilt);
-            DeviceOrientationEvent.requestPermission().then(function (r) { if (r === "granted") listenTilt(); }).catch(function () {});
-        };
-        addEventListener("touchend", askTilt, { passive: true });
-    } else if (window.DeviceOrientationEvent) listenTilt();
-    /* finger: sideways travel since the touch began, as a share of the screen width */
-    addEventListener("touchstart", function (e) { if (!mq.matches) return; fx0 = e.touches[0].clientX; }, { passive: true });
+    if (!still && window.DeviceOrientationEvent) {
+        if (typeof DeviceOrientationEvent.requestPermission === "function") {
+            var ask = function () {   // iOS asks once, from a tap
+                removeEventListener("touchend", ask);
+                DeviceOrientationEvent.requestPermission().then(function (r) { if (r === "granted") addEventListener("deviceorientation", onTilt, { passive: true }); }).catch(function () {});
+            };
+            addEventListener("touchend", ask, { passive: true });
+        } else addEventListener("deviceorientation", onTilt, { passive: true });
+    }
+    addEventListener("touchstart", function (e) { if (mq.matches) fx0 = e.touches[0].clientX; }, { passive: true });
     addEventListener("touchmove", function (e) {
         if (fx0 === null) return;
-        finger = Math.max(-1, Math.min(1, (e.touches[0].clientX - fx0) / (innerWidth * .35))); kick();
+        finger = Math.max(-1, Math.min(1, (e.touches[0].clientX - fx0) / (innerWidth * .35))); wake();
     }, { passive: true });
-    addEventListener("touchend", function () { fx0 = null; kick(); }, { passive: true });
-    kick();
-    if (mq.addEventListener) mq.addEventListener("change", focusSetup); else mq.addListener(focusSetup);
-    focusSetup();
-    if (window.matchMedia("(hover: hover)").matches && !calm.matches) {
-        var lq = 0;
-        addEventListener("pointermove", function (e) {
-            if (lq) return;
-            lq = requestAnimationFrame(function () { lq = 0; root.style.setProperty("--cr-la", ((e.clientX / innerWidth - .5) * 70 + (e.clientY / innerHeight - .5) * 30).toFixed(1)); });
-        }, { passive: true });
-    }
+    addEventListener("touchend", function () { fx0 = null; wake(); }, { passive: true });
+    if (mq.addEventListener) mq.addEventListener("change", function () { measure(); wake(); });
 
     /* ---------- player DOM ---------- */
     /* Deck geometry, in units of the deck's width (deck is 100 × 86):

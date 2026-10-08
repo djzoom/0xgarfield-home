@@ -58,7 +58,7 @@
     background: radial-gradient(circle at 50% 50%, transparent 0 45.5%, rgba(255, 255, 255, .35) 46%, transparent 46.8%), var(--cr-grain, none); background-size: 100% 100%, 180px 180px; }
 .cr-sleeve::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: 5px; z-index: 2; background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .35)); pointer-events: none; }
 .cr-lip { position: absolute; z-index: 2; top: 3%; bottom: 3%; right: -1px; width: 18px; pointer-events: none; background: linear-gradient(90deg, rgba(0, 0, 0, .32), transparent); opacity: .8; }
-.cr-disc { position: absolute; z-index: 1; top: 2.5%; left: 2.5%; width: 95%; aspect-ratio: 1; border-radius: 50%; transform: translateX(48%); transition: transform 1.15s cubic-bezier(.45,.05,.2,1), filter 1.15s; will-change: transform; }
+.cr-disc { position: absolute; z-index: 1; top: 2.5%; left: 2.5%; width: 95%; aspect-ratio: 1; border-radius: 50%; transform: translateX(calc(var(--pull, .48) * 100%)) rotate(calc(var(--pull, .48) * 9deg)); will-change: transform; }
 .cr-rot { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; }
 .cr-rot canvas { width: 100%; height: 100%; display: block; }
 .cr-disc::after, .pl-disc::after { content: ""; position: absolute; inset: 0; border-radius: 50%; z-index: -1; box-shadow: 0 14px 26px -12px rgba(0, 0, 0, .45), 0 0 32px -8px var(--glow, transparent); }
@@ -79,16 +79,12 @@
     .cr-rec:hover, .cr-rec:focus-visible { z-index: 3; }
     .cr-rec:hover .cr-stage, .cr-rec:focus-visible .cr-stage { transform: scale(1.03); }
     .cr-rec:hover .cr-sleeve, .cr-rec:focus-visible .cr-sleeve { transform: translateX(-1.5%) rotateY(-3deg); }
-    .cr-rec:hover .cr-disc, .cr-rec:focus-visible .cr-disc { transform: translateX(66%) rotate(6deg); }
 }
 
 /* entrance: only when scripting is on, and only from a visible-by-default state */
 .cr-js .cr-crate:not(.cr-in) .cr-rec { opacity: 0; transform: translateY(56px); }
-.cr-js .cr-crate:not(.cr-in) .cr-disc { transform: none; }
-@media (max-width: 860px) { .cr-js .cr-crate:not(.cr-in) .cr-disc { transform: translateY(calc(var(--pull, .093) * -100%)); } }
 .cr-crate .cr-rec { transition: opacity .7s var(--cr-ease), transform .9s var(--cr-ease); }
 .cr-crate.cr-in:not(.cr-settled) .cr-rec { transition-delay: calc(var(--i) * 110ms); }
-.cr-crate.cr-in:not(.cr-settled) .cr-disc { transition-duration: 1.1s; transition-delay: calc(.5s + var(--i) * 110ms); }
 
 /* ----- player ----- */
 .pl { position: fixed; inset: 0; z-index: 1000; display: none; color: var(--bf); overscroll-behavior: contain; }
@@ -153,7 +149,7 @@ html[lang^="zh"] .pl-body p { line-height: 1.8; }
     .cr-sz { width: 100%; }
     /* --pull is driven per record by crate.js: 0.093 at rest (a 60° arc shows), up to ~0.6 while scrolling past the middle,
        with left and right columns pushed apart by phone tilt and sideways finger movement */
-    .cr-disc { transform: translateY(calc(var(--pull, .093) * -100%)) rotate(calc(var(--pull, .093) * 12deg)); transition: none; }
+    .cr-disc { transform: translateY(calc(var(--pull, .093) * -100%)) rotate(calc(var(--pull, .093) * 12deg)); }
     /* the pull only happens while the page is moving; once scrolling stops every record settles back to the 1/6 arc */
 
     .cr-lip { top: -1px; bottom: auto; left: 3%; right: 3%; width: auto; height: 14px; background: linear-gradient(180deg, rgba(0, 0, 0, .32), transparent); }
