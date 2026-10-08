@@ -163,7 +163,7 @@
        desktop draws it as translateX(pull), phone as translateY(-pull) (crate.css).
        Each record moves on a slightly under-damped spring. The loop runs only while the crate is on screen. */
     var mq = window.matchMedia("(max-width: 860px)"), still = calm.matches;
-    var CFG = { desk: { rest: .46, reach: .22, sigma: .95 }, phone: { rest: .093, reach: .47, sigma: .62 } };
+    var CFG = { desk: { rest: .1263, reach: .45, sigma: .95 }, phone: { rest: .093, reach: .47, sigma: .62 } };
     var st = recs.map(function (r) { return { el: r, x: 0, y: 0, size: 1, pull: 0, v: 0, start: Infinity, hold: false }; });
     var fx = innerWidth / 2, fy = innerHeight * .42, have = null, raf = 0, last = 0, seen = false, entered = false, t0 = performance.now();
     function measure() {   // sleeve centres in page coordinates, measured once per layout
