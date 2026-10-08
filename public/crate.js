@@ -169,12 +169,62 @@
             { rootMargin: "-38% 0px -38% 0px", threshold: 0 });
         recs.forEach(function (r) { fio.observe(r); });
     }
-    var moveT = 0;
+    /* ---------- mobile: each record's pull is computed, not toggled ----------
+       pull = rest + scroll + side * bias
+         rest   0.093  -> exactly 1/6 of the rim shows above the sleeve
+         scroll 0.41   -> added while the page moves and the record crosses the middle band
+         bias  [-1, 1] -> weighted mix of phone tilt (0.6) and sideways finger movement (0.4);
+                          right column gets +bias, left column -bias, so a row never moves in lockstep */
+    var REST = .093, SCROLL = .41, SIDE = .2, moving = false, moveT = 0, bias = 0, tilt = 0, finger = 0,
+        hasTilt = false, base = null, fx0 = null, loop = 0, pulls = recs.map(function () { return REST; });
+    function sideOf(r) { var c = r.getBoundingClientRect(); return (c.left + c.width / 2) < innerWidth / 2 ? -1 : 1; }
+    function kick() { if (!loop && mq.matches && !calm.matches) loop = requestAnimationFrame(frame); }
+    function frame() {
+        loop = 0;
+        if (fx0 === null) finger *= .9;                     // the finger's influence fades once it lifts
+        var wT = hasTilt ? .6 : 0, wF = hasTilt ? .4 : 1, target = Math.max(-1, Math.min(1, wT * tilt + wF * finger));
+        bias += (target - bias) * .18;
+        var busy = Math.abs(target - bias) > .002 || Math.abs(finger) > .002;
+        recs.forEach(function (r, i) {
+            var want = REST + (moving && r.classList.contains("cr-active") ? SCROLL : 0) + sideOf(r) * bias * SIDE;
+            want = Math.max(.02, Math.min(.62, want));
+            pulls[i] += (want - pulls[i]) * .14;            // spring toward the target: no CSS transition fighting the sensors
+            if (Math.abs(want - pulls[i]) > .001) busy = true;
+            r.style.setProperty("--pull", pulls[i].toFixed(4));
+        });
+        if (busy) kick();
+    }
     addEventListener("scroll", function () {
         if (!mq.matches) return;
-        if (!crate.classList.contains("cr-moving")) crate.classList.add("cr-moving");
-        clearTimeout(moveT); moveT = setTimeout(function () { crate.classList.remove("cr-moving"); }, 450);
+        moving = true; crate.classList.add("cr-moving"); kick();
+        clearTimeout(moveT); moveT = setTimeout(function () { moving = false; crate.classList.remove("cr-moving"); kick(); }, 450);
     }, { passive: true });
+    /* tilt: left/right (gamma), relative to a slowly drifting baseline so holding the phone at an angle settles back to neutral */
+    function onTilt(e) {
+        if (e.gamma == null) return;
+        hasTilt = true;
+        if (base === null) base = e.gamma;
+        base += (e.gamma - base) * .006;   // ~3 s at 60 Hz: holding a tilt slowly becomes the new neutral
+        tilt = Math.max(-1, Math.min(1, (e.gamma - base) / 18));
+        kick();
+    }
+    function listenTilt() { addEventListener("deviceorientation", onTilt, { passive: true }); }
+    if (window.DeviceOrientationEvent && typeof DeviceOrientationEvent.requestPermission === "function") {
+        // iOS asks once, from a tap
+        var askTilt = function () {
+            removeEventListener("touchend", askTilt);
+            DeviceOrientationEvent.requestPermission().then(function (r) { if (r === "granted") listenTilt(); }).catch(function () {});
+        };
+        addEventListener("touchend", askTilt, { passive: true });
+    } else if (window.DeviceOrientationEvent) listenTilt();
+    /* finger: sideways travel since the touch began, as a share of the screen width */
+    addEventListener("touchstart", function (e) { if (!mq.matches) return; fx0 = e.touches[0].clientX; }, { passive: true });
+    addEventListener("touchmove", function (e) {
+        if (fx0 === null) return;
+        finger = Math.max(-1, Math.min(1, (e.touches[0].clientX - fx0) / (innerWidth * .35))); kick();
+    }, { passive: true });
+    addEventListener("touchend", function () { fx0 = null; kick(); }, { passive: true });
+    kick();
     if (mq.addEventListener) mq.addEventListener("change", focusSetup); else mq.addListener(focusSetup);
     focusSetup();
     if (window.matchMedia("(hover: hover)").matches && !calm.matches) {

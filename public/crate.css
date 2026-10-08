@@ -85,6 +85,7 @@
 /* entrance: only when scripting is on, and only from a visible-by-default state */
 .cr-js .cr-crate:not(.cr-in) .cr-rec { opacity: 0; transform: translateY(56px); }
 .cr-js .cr-crate:not(.cr-in) .cr-disc { transform: none; }
+@media (max-width: 860px) { .cr-js .cr-crate:not(.cr-in) .cr-disc { transform: translateY(calc(var(--pull, .093) * -100%)); } }
 .cr-crate .cr-rec { transition: opacity .7s var(--cr-ease), transform .9s var(--cr-ease); }
 .cr-crate.cr-in:not(.cr-settled) .cr-rec { transition-delay: calc(var(--i) * 110ms); }
 .cr-crate.cr-in:not(.cr-settled) .cr-disc { transition-duration: 1.1s; transition-delay: calc(.5s + var(--i) * 110ms); }
@@ -150,9 +151,11 @@ html[lang^="zh"] .pl-body p { line-height: 1.8; }
     .cr-crate { grid-template-columns: 1fr 1fr; column-gap: 14px; row-gap: calc((100vw - 2 * var(--gutter, 20px)) * .25 + 32px); padding-top: calc((100vw - 2 * var(--gutter, 20px)) * .25); }
     .cr-rec { container-type: normal; align-items: stretch; }
     .cr-sz { width: 100%; }
-    .cr-disc { transform: translateY(-9.3%); } /* resting: exactly 1/6 of the rim (a 60° arc) shows above the sleeve */
+    /* --pull is driven per record by crate.js: 0.093 at rest (a 60° arc shows), up to ~0.6 while scrolling past the middle,
+       with left and right columns pushed apart by phone tilt and sideways finger movement */
+    .cr-disc { transform: translateY(calc(var(--pull, .093) * -100%)) rotate(calc(var(--pull, .093) * 12deg)); transition: none; }
     /* the pull only happens while the page is moving; once scrolling stops every record settles back to the 1/6 arc */
-    .cr-crate.cr-moving .cr-rec.cr-active .cr-disc { transform: translateY(-50%) rotate(6deg); }
+
     .cr-lip { top: -1px; bottom: auto; left: 3%; right: 3%; width: auto; height: 14px; background: linear-gradient(180deg, rgba(0, 0, 0, .32), transparent); }
     .cr-sleeve::after { top: 0; left: 0; right: 0; bottom: auto; width: auto; height: 4px; background: linear-gradient(0deg, transparent, rgba(0, 0, 0, .35)); }
     .cr-meta { margin-top: 12px; font-size: 11px; flex-direction: column; gap: 2px; }
