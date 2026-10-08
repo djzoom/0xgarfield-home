@@ -111,16 +111,8 @@ p + p { margin-top: 1em; }
 
 .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ink); min-height: 44px; }
 .brand-mark {
-    width: 34px; height: 34px; border-radius: 50%;
-    display: grid; place-items: center;
-    background: var(--accent); color: var(--surface);
-    font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500;
-    position: relative;
-}
-/* The brand mark is a miniature disc: signal centre on a green label. */
-.brand-mark::after {
-    content: ""; position: absolute; width: 6px; height: 6px; border-radius: 50%;
-    background: var(--signal); border: 1px solid var(--accent); box-sizing: content-box;
+    width: 30px; height: 30px; border-radius: 50%; flex: none;
+    background: #E1AB49; /* the backdrop of the portrait photograph */
 }
 .brand-copy { display: flex; flex-direction: column; line-height: 1.2; }
 .brand-copy strong { font-weight: 500; font-size: 0.95rem; }
@@ -321,7 +313,7 @@ html[lang^="zh"] .hero h1 { max-width: 14em; }
 
 .about-header { display: grid; grid-template-columns: minmax(0, 1fr) 168px; gap: clamp(24px, 4vw, 56px); align-items: end; }
 .about-portrait { margin: 0; }
-.about-portrait img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: var(--radius); background: var(--surface-media); }
+.about-portrait img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: 50% 0; border-radius: 50%; background: var(--surface-media); }
 @media (max-width: 820px) { .about-header { grid-template-columns: minmax(0, 1fr) 96px; gap: 16px; } }
 
 .prose-facts { margin: 0; display: grid; gap: 0; border-top: 1px solid var(--line); }

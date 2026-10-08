@@ -38,7 +38,7 @@ into `dist/`, deployed to Cloudflare by GitHub Actions on every push to `main`.
 - Do not mention: Vensa, Mensa, visa/immigration status, current city.
 
 ## Signal colour (--signal), the only allowed uses
-The needle tip in the homepage opening; cursor notes; active-nav underline; axis dots; disc centre; primary-button and close-button hover rings; the brand mark's centre dot (the mark is a miniature disc). Never text, never fills.
+The needle tip in the homepage opening; cursor notes; active-nav underline; axis dots; disc centre; primary-button and close-button hover rings; (the brand mark is now a plain circle in the portrait's backdrop colour #E1AB49, not signal). Never text, never fills.
 
 ## Homepage record crate (public/crate.css, public/crate.js)
 - Work is shown as four record sleeves in this order: Run Baby Run, PILO, Talktalk, AURORA.
