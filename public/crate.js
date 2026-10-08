@@ -169,6 +169,12 @@
             { rootMargin: "-38% 0px -38% 0px", threshold: 0 });
         recs.forEach(function (r) { fio.observe(r); });
     }
+    var moveT = 0;
+    addEventListener("scroll", function () {
+        if (!mq.matches) return;
+        if (!crate.classList.contains("cr-moving")) crate.classList.add("cr-moving");
+        clearTimeout(moveT); moveT = setTimeout(function () { crate.classList.remove("cr-moving"); }, 450);
+    }, { passive: true });
     if (mq.addEventListener) mq.addEventListener("change", focusSetup); else mq.addListener(focusSetup);
     focusSetup();
     if (window.matchMedia("(hover: hover)").matches && !calm.matches) {

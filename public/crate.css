@@ -151,7 +151,8 @@ html[lang^="zh"] .pl-body p { line-height: 1.8; }
     .cr-rec { container-type: normal; align-items: stretch; }
     .cr-sz { width: 100%; }
     .cr-disc { transform: translateY(-9.3%); } /* resting: exactly 1/6 of the rim (a 60° arc) shows above the sleeve */
-    .cr-rec.cr-active .cr-disc { transform: translateY(-50%) rotate(6deg); }
+    /* the pull only happens while the page is moving; once scrolling stops every record settles back to the 1/6 arc */
+    .cr-crate.cr-moving .cr-rec.cr-active .cr-disc { transform: translateY(-50%) rotate(6deg); }
     .cr-lip { top: -1px; bottom: auto; left: 3%; right: 3%; width: auto; height: 14px; background: linear-gradient(180deg, rgba(0, 0, 0, .32), transparent); }
     .cr-sleeve::after { top: 0; left: 0; right: 0; bottom: auto; width: auto; height: 4px; background: linear-gradient(0deg, transparent, rgba(0, 0, 0, .35)); }
     .cr-meta { margin-top: 12px; font-size: 11px; flex-direction: column; gap: 2px; }
