@@ -48,6 +48,7 @@ The needle tip in the homepage opening; cursor notes; active-nav underline; axis
 - Lower band artwork is public/images/band-*.svg (outlined type, no font loading). PILO uses its original logo paths.
 - Record detail copy, facts, colours and UI strings live in the JSON block `#cr-data` inside index.html / index-zh.html. Edit EN and ZH together.
 - The player plays a 32-second, loudness-normalised excerpt from each project's own library (public/audio/*-v1.mp3; RBR library, Kat Records, CHL). PILO's clip is from the CHL library (owner's choice) until the Yunmeng (云梦) recordings (mx01.mp3 etc.) are found. The zxzz*/dry*/BA* files in the EB1A folder are Zuoxiao Zuzhou recordings, not Yunmeng: never use them.
+- The radio above the records (public/radio.js, .rd-* in crate.css, station list in #rd-data in both index templates) plays the owner's own ad/programme recordings from public/radio/*.mp3 (mono 56 kbps). Real-radio logic: only the OFF/ON switch makes sound; the knob, dial and preset keys move the needle whether the set is on or off. Every station runs on one shared clock (EPOCH + offset), so tuning in joins mid-programme. Another player starting (gw:audio event) switches the radio off. Chinaok (青花瓷 karaoke) is someone else's song: do not add it.
 - /images/* is cached immutable for a year: when an image or band SVG changes, give it a new file name.
 - Site type: Newsreader (EN) with Noto Serif SC (ZH); Geist Mono for metadata.
 
